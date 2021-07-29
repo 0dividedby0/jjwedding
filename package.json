@@ -6,7 +6,8 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "aws-deploy": "aws s3 sync dist/jjWedding/ s3://happilyeverhalcomb.com"
   },
   "private": true,
   "dependencies": {

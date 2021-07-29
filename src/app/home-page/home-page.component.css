@@ -1,0 +1,58 @@
+.title {
+    font-family: Snell Roundhand, cursive, sans-serif;
+    font-size: 100px;
+    background: rgba(255,255,255,0.6);
+    padding-bottom: 10px;
+    display: inline-block;
+    width: 100%;
+}
+.bg {
+    height: 100%; 
+    background-position: bottom;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.menuBar {
+    text-align: center;
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
+    font-size: 20px;
+    font-family: Noto Sans, sans-serif;
+    background: rgba(255,255,255,0.6);
+}
+.menuButton {
+    font-size: 20px;
+    font-family: cursive, sans-serif;
+    border: 2px black solid;
+    display: inline-block;
+    padding: 10px;
+    border-radius: 15px;
+    background: rgba(255,255,255,0.6);
+    box-shadow: 2px 2px rgba(0,0,0,0.5);
+    margin: 10px;
+    margin-left: 20px;
+    margin-right: 20px;
+    cursor: pointer;
+    text-decoration: none;
+    color: black;
+}
+.menuButton:hover {
+    border: 2px navy solid;
+    color: navy;
+}
+.menuButton:active {
+    box-shadow: none;
+}
+.menuItem {
+    margin: 20px;
+    vertical-align: middle;
+    line-height: 75px;
+}
+.fireworks {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+}
