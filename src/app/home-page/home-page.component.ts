@@ -22,7 +22,7 @@ export class HomePageComponent implements OnInit {
 
   constructor() { }
 
-  title = "Jason and Jessica's Wedding";
+  title = "Jason & Jessica";
   countdown = "340 days 21 hours 12 minutes"
   fireworksShowing = true;
 
