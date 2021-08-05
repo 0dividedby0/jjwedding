@@ -15,8 +15,6 @@
     background: rgba(255,255,255,0.6);
     box-shadow: 2px 2px rgba(0,0,0,0.5);
     margin: 10px;
-    margin-left: 20px;
-    margin-right: 20px;
     cursor: pointer;
     text-decoration: none;
     color: black;
@@ -41,8 +39,33 @@
     clear: both;
     display: inline-block;
     font-family: Arial;
-    margin: 20px;
+    margin-top: 10px;
     font-size: 80px;
     width: 100%;
     text-align: center;
+}
+.menuButtonGroup {
+    float: right;
+}
+.spacer {
+    height: 75px;
+}
+@media (max-width: 1000px) {
+    .menuItem {
+        width: 100%;
+    }
+    .menuBar {
+        text-align: center;
+    }
+    .menuButtonGroup {
+        float: none;
+    }
+    .spacer {
+        height: 150px;
+    }
+}
+@media (max-width: 600px) {
+    .spacer {
+        height: 225px;
+    }
 }
