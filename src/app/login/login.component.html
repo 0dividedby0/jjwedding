@@ -1,0 +1,9 @@
+<div class="popup">
+    <div>Login</div>
+    <div>{{currentUser.username}}</div>
+    <div>{{currentUser.email}}</div>
+    <div>{{currentUser.access_code}}</div>
+    <div>{{currentUser.authenticated}}</div>
+    <input type="text" [(ngModel)]="access_code">
+    <button (click)="authenticateUser()">Login</button>
+</div>
