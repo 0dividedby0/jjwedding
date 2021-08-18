@@ -34,9 +34,9 @@ export class GuestService {
       return this.http.get<User>(`http://192.168.0.34:7318/user/${access_code}`);
   }
 
-  updateEmail(email: string) {
-      this.http.post('http://192.168.0.34:7318/email', {user: this.currentUser.access_code, email: email}).subscribe(data => {
-          console.log(data);
+  updateUser(updates: any) {
+      this.http.post(`http://192.168.0.34:7318/user/${this.currentUser.access_code}`, updates).subscribe(data => {
+          this.authenticateGuest(this.currentUser.access_code);
       });
   }
 

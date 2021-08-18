@@ -29,7 +29,7 @@ export class LoginComponent implements OnInit {
     }
 
     updateEmail() {
-        this.guestService.updateEmail(this.email);
+        this.guestService.updateUser({email: this.email});
     }
 
     ngOnInit(): void {
