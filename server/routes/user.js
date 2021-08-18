@@ -2,9 +2,9 @@ var express = require('express');
 var database = require('../database');
 var router = express.Router();
 
-/* GET users listing. */
-router.get('/:access_code', function(req, res, next) {
-    console.log(req);
+/* GET user */
+router.get('/:access_code', function(req, res) {
+    console.log("Getting user!");
     database.query(`select * from guests where access_code = "${req.params.access_code}"`, function (error, results, fields) {
         if (error) {
             console.log(error);

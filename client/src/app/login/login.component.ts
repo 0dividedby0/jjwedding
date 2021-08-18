@@ -10,14 +10,26 @@ import { CurrentUser } from '../currentUser';
 export class LoginComponent implements OnInit {
     currentUser: CurrentUser;
     access_code: string;
+    email: string;
+    accountWindowShowing: boolean;
 
     constructor(private guestService: GuestService, currentUser: CurrentUser) { 
         this.currentUser = currentUser;
         this.access_code = "";
+        this.email = "";
+        this.accountWindowShowing = true;
     }
 
     authenticateUser() {
         this.guestService.authenticateGuest(this.access_code);
+    }
+
+    logoutUser() {
+        this.guestService.logoutGuest();
+    }
+
+    updateEmail() {
+        this.guestService.updateEmail(this.email);
     }
 
     ngOnInit(): void {

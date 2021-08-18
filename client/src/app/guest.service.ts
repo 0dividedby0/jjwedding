@@ -23,8 +23,21 @@ export class GuestService {
     });
   }
 
+  logoutGuest() {
+    this.currentUser.authenticated = 0;
+    this.currentUser.access_code = "";
+    this.currentUser.email = "";
+    this.currentUser.username = "";
+  }
+
   getGuest(access_code: string) {
       return this.http.get<User>(`http://192.168.0.34:7318/user/${access_code}`);
+  }
+
+  updateEmail(email: string) {
+      this.http.post('http://192.168.0.34:7318/email', {user: this.currentUser.access_code, email: email}).subscribe(data => {
+          console.log(data);
+      });
   }
 
   constructor(private http: HttpClient, private currentUser: CurrentUser) { }

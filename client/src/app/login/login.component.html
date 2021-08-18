@@ -1,9 +1,19 @@
-<div class="popup">
-    <div>Login</div>
-    <div>{{currentUser.username}}</div>
-    <div>{{currentUser.email}}</div>
-    <div>{{currentUser.access_code}}</div>
-    <div>{{currentUser.authenticated}}</div>
-    <input type="text" [(ngModel)]="access_code">
-    <button (click)="authenticateUser()">Login</button>
+<div class="accountButton" (click)="accountWindowShowing = true">
+    {{currentUser.authenticated ? (currentUser.username[0] + currentUser.username[1]).toUpperCase() : "☃︎"}}
+</div>
+<div class="popup" *ngIf="!currentUser.authenticated || accountWindowShowing">
+    <div *ngIf="!currentUser.authenticated">
+        <input class="standardInput" type="text" placeholder="Access Code" [(ngModel)]="access_code">
+        <button class="standardButton" (click)="authenticateUser()">Login</button>
+    </div>
+    <div *ngIf="currentUser.authenticated">
+        <div class="standardText" style="font-weight: bold; font-size: 30px;">Welcome {{currentUser.username}}!</div>
+        <div class="standardText" *ngIf="currentUser.email" style="margin-bottom: 10px; font-family: sans-serif;">{{currentUser.email}}</div>
+        <div *ngIf="!currentUser.email">
+            <input class="standardInput" type="text" placeholder="Email" [(ngModel)]="email">
+            <button class="standardButton" (click)="updateEmail()">Submit</button>
+        </div>
+        <button class="standardButton" (click)="logoutUser()">Logout</button>
+        <button class="standardButton" (click)="accountWindowShowing = false">Close</button>
+    </div>
 </div>
