@@ -29,16 +29,17 @@ export class GuestService {
     this.currentUser.access_code = "";
     this.currentUser.email = "";
     this.currentUser.username = "";
+    localStorage.removeItem("accessCode");
   }
 
   getGuest(access_code: string) {
-      // return this.http.  get<User>(`http://75.172.128.175:7318/user/${access_code}`);
-      return this.http.get<User>(`http://192.168.0.34:7318/user/${access_code}`);
+      return this.http.  get<User>(`http://75.172.128.175:7318/user/${access_code}`);
+      // return this.http.get<User>(`http://192.168.0.34:7318/user/${access_code}`);
   }
 
   updateUser(updates: any) {
-      // this.http.post(`http://75.172.128.175:7318/user/${this.currentUser.access_code}`, updates).subscribe(data => {
-      this.http.post(`http://192.168.0.34:7318/user/${this.currentUser.access_code}`, updates).subscribe(data => {
+      this.http.post(`http://75.172.128.175:7318/user/${this.currentUser.access_code}`, updates).subscribe(data => {
+      // this.http.post(`http://192.168.0.34:7318/user/${this.currentUser.access_code}`, updates).subscribe(data => {
           this.authenticateGuest(this.currentUser.access_code);
       });
   }
