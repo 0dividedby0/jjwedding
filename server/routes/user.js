@@ -19,4 +19,14 @@ router.get('/:access_code', function(req, res) {
     });
 });
 
+/* Update user email */
+router.post('/:access_code', function(req, res) {
+    console.log(req.body);
+    database.query(`update guests set email = "${req.body.email}" where access_code = "${req.params.access_code}"`, function (error, results, fields) {
+        if (error) {
+            console.log(error);
+        }
+    });
+});
+
 module.exports = router;
