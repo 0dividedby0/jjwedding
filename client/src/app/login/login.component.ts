@@ -15,9 +15,13 @@ export class LoginComponent implements OnInit {
 
     constructor(private guestService: GuestService, currentUser: CurrentUser) { 
         this.currentUser = currentUser;
-        this.access_code = "";
         this.email = "";
-        this.accountWindowShowing = true;
+        this.access_code = "";
+        if (localStorage.getItem("accessCode")) {
+            this.access_code = localStorage.getItem("accessCode") || "";
+            this.authenticateUser();
+        }
+        this.accountWindowShowing = false;
     }
 
     authenticateUser() {
@@ -30,6 +34,7 @@ export class LoginComponent implements OnInit {
 
     updateEmail() {
         this.guestService.updateUser({email: this.email});
+        this.guestService.authenticateGuest(this.access_code);
     }
 
     ngOnInit(): void {
