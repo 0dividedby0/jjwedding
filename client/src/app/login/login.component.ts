@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { GuestService } from '../guest.service';
-import { CurrentUser } from '../currentUser';
+import { CurrentParty } from '../currentParty';
 
 @Component({
     selector: 'app-login',
@@ -8,13 +8,13 @@ import { CurrentUser } from '../currentUser';
     styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-    currentUser: CurrentUser;
+    currentParty: CurrentParty;
     access_code: string;
     email: string;
     accountWindowShowing: boolean;
 
-    constructor(private guestService: GuestService, currentUser: CurrentUser) { 
-        this.currentUser = currentUser;
+    constructor(private guestService: GuestService, currentParty: CurrentParty) { 
+        this.currentParty = currentParty;
         this.email = "";
         this.access_code = "";
         if (localStorage.getItem("accessCode")) {
@@ -25,7 +25,12 @@ export class LoginComponent implements OnInit {
     }
 
     authenticateUser() {
-        this.guestService.authenticateGuest(this.access_code);
+        if (this.access_code.length == 4 && this.access_code.match(/^[0-9a-zA-Z]+$/)){
+            this.guestService.authenticateGuest(this.access_code);
+        }
+        else {
+            alert("Access codes can only contain 4 letters or numbers");
+        }
     }
 
     logoutUser() {
@@ -33,7 +38,7 @@ export class LoginComponent implements OnInit {
     }
 
     updateEmail() {
-        this.guestService.updateUser({email: this.email});
+        this.guestService.updateParty({email: this.email});
         this.guestService.authenticateGuest(this.access_code);
     }
 

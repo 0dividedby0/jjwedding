@@ -14,7 +14,7 @@ import { RsvpPageComponent } from './rsvp-page/rsvp-page.component';
 import { TravelPageComponent } from './travel-page/travel-page.component';
 import { RegistryPageComponent } from './registry-page/registry-page.component';
 import { LoginComponent } from './login/login.component';
-import { CurrentUser } from './currentUser';
+import { CurrentParty } from './currentParty';
 
 @NgModule({
   declarations: [
@@ -35,7 +35,7 @@ import { CurrentUser } from './currentUser';
     FormsModule,
     HttpClientModule
   ],
-  providers: [CurrentUser],
+  providers: [CurrentParty],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

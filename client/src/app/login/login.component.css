@@ -1,7 +1,7 @@
 .accountButton {
     position: absolute;
-    top: 40px;
-    right: 40px;
+    top: 10px;
+    right: 10px;
     border: 1px black solid;
     border-radius: 40px;
     text-align: center;
@@ -10,9 +10,11 @@
     font-family: cursive;
     width: 25px;
     height: 25px;
+    font-size: initial;
+    cursor: pointer;
 }
 .popup {
-    background-color: rgba(255,255,255,0.8);
+    background-color: rgb(254,251,247);
     position: absolute;
     top: calc(50% - 80px);
     left: calc(50% - 220px);
@@ -37,6 +39,7 @@
     padding: 5px;
     font-family: cursive;
     border-radius: 10px;
+    cursor: pointer;
 }
 .standardText {
     font-family: cursive;
