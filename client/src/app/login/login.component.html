@@ -1,17 +1,17 @@
 <div class="accountButton" (click)="accountWindowShowing = true">
-    {{currentUser.authenticated ? (currentUser.username[0] + currentUser.username[1]).toUpperCase() : "☃︎"}}
+    {{currentParty.authenticated ? (currentParty.username[0] + currentParty.username[1]).toUpperCase() : "☃︎"}}
 </div>
 <div class="popup" *ngIf="accountWindowShowing">
-    <div *ngIf="!currentUser.authenticated">
+    <div *ngIf="!currentParty.authenticated">
         <input class="standardInput" type="text" placeholder="Access Code" [(ngModel)]="access_code">
         <button class="standardButton" (click)="authenticateUser()">Login</button>
         <button class="standardButton" (click)="accountWindowShowing = false">Close</button>
     </div>
-    <div *ngIf="currentUser.authenticated">
-        <div class="standardText" style="font-weight: bold; font-size: 30px;">Welcome {{currentUser.username}}!</div>
-        <div class="standardText" *ngIf="currentUser.email" style="margin-bottom: 10px; font-family: sans-serif;">{{currentUser.email}}</div>
-        <button class="standardButton" *ngIf="currentUser.email" (click)="currentUser.email = ''">Change Email</button>
-        <div *ngIf="!currentUser.email">
+    <div *ngIf="currentParty.authenticated">
+        <div class="standardText" style="font-weight: bold; font-size: 30px;">Welcome {{currentParty.username}}!</div>
+        <div class="standardText" *ngIf="currentParty.email" style="margin-bottom: 10px; font-family: sans-serif;">{{currentParty.email}}</div>
+        <button class="standardButton" *ngIf="currentParty.email" (click)="currentParty.email = ''">Change Email</button>
+        <div *ngIf="!currentParty.email">
             <input class="standardInput" type="text" placeholder="Email" [(ngModel)]="email">
             <button class="standardButton" (click)="updateEmail()">Submit</button>
         </div>
