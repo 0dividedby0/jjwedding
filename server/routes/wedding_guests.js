@@ -13,8 +13,17 @@ router.get('/party/:access_code', function(req, res) {
             res.send({
                 access_code: results[0].access_code,
                 email: results[0].email,
-                username: results[0].party
+                party: results[0].party
             });
+        }
+    });
+});
+/* POST party email */
+router.post('/party/:access_code', function(req, res) {
+    console.log(req.body);
+    database.query(`update parties set email = "${req.body.email}" where access_code = "${req.params.access_code}"`, function (error, results, fields) {
+        if (error) {
+            console.log(error);
         }
     });
 });
@@ -31,14 +40,15 @@ router.get('/guests/:party_access_code', function(req, res) {
         }
     });
 });
-
 /* POST party email */
-router.post('/party/:access_code', function(req, res) {
+router.post('/guests', function(req, res) {
     console.log(req.body);
-    database.query(`update parties set email = "${req.body.email}" where access_code = "${req.params.access_code}"`, function (error, results, fields) {
-        if (error) {
-            console.log(error);
-        }
+    req.body.forEach(guest => {
+        database.query(`update guests set rsvp = ${guest.rsvp} where name = "${guest.name}"`, function (error, results, fields) {
+            if (error) {
+                console.log(error);
+            }
+        });
     });
 });
 
