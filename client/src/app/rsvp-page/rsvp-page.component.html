@@ -10,10 +10,10 @@
                 <div class="rsvpItem standardText" style="width: 200px; text-align: center;">Delightfully Accept</div>
                 <div class="rsvpItem standardText" style="width: 200px; text-align: center;">Regretfully Decline</div>
             </div>
-            <div *ngFor="let guest of currentParty.guests; index as i;" style="margin-top: 10px; margin-bottom: 10px;">
-                <div class="rsvpItem" style="width: 400px; vertical-align: top;"><input class="standardInput" style="width: 95%;" value="{{guest.name}}"></div>
-                <div class="rsvpItem" style="width: 200px; text-align: center;"><input type="radio" name="{{i}}RSVP" [(ngModel)]="guest.rsvp" [value]="1"></div>
-                <div class="rsvpItem" style="width: 200px; text-align: center;"><input type="radio" name="{{i}}RSVP" [(ngModel)]="guest.rsvp" [value]="0"></div>
+            <div *ngFor="let guest of currentParty.guests;" style="margin-top: 10px; margin-bottom: 10px;">
+                <div class="rsvpItem" style="width: 400px; vertical-align: top;"><input class="standardInput" style="width: 95%;" [(ngModel)]="guest.name"></div>
+                <div class="rsvpItem" style="width: 200px; text-align: center;"><input type="radio" name="{{guest.guest_id}}RSVP" [(ngModel)]="guest.rsvp" [value]="1"></div>
+                <div class="rsvpItem" style="width: 200px; text-align: center;"><input type="radio" name="{{guest.guest_id}}RSVP" [(ngModel)]="guest.rsvp" [value]="0"></div>
             </div>
             <button class="standardButton" (click)="submitRSVP()">Submit</button>
         </div>

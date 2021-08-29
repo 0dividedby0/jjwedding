@@ -4,6 +4,7 @@ interface Guest {
     access_code: string;
     name: string;
     rsvp: boolean;
+    guest_id: number;
 }
 
 @Injectable()

@@ -11,12 +11,16 @@ interface Guest {
     access_code: string;
     name: string;
     rsvp: boolean;
+    guest_id: number;
 }
 
 @Injectable({
     providedIn: 'root'
 })
 export class GuestService {
+    static prod = false;
+    static rootURL: string = GuestService.prod ? "http://75.172.128.175:7318" : "http://192.168.0.34:7318";
+
     authenticateParty(access_code: string): void {
         this.getParty(access_code)
         .subscribe((data: Party) => {
@@ -42,26 +46,22 @@ export class GuestService {
     }
 
     getParty(access_code: string) {
-        // return this.http.get<User>(`http://75.172.128.175:7318/party/${access_code}`);
-        return this.http.get<Party>(`http://192.168.0.34:7318/party/${access_code}`);
+        return this.http.get<Party>(`${GuestService.rootURL}/party/${access_code}`);
     }
 
     updateParty(updates: any) {
-        // this.http.post(`http://75.172.128.175:7318/party/${this.currentParty.access_code}`, updates).subscribe(data => {
-        this.http.post(`http://192.168.0.34:7318/party/${this.currentParty.access_code}`, updates).subscribe(data => {
+        this.http.post(`${GuestService.rootURL}/party/${this.currentParty.access_code}`, updates).subscribe(data => {
             this.authenticateParty(this.currentParty.access_code);
         });
     }
 
     getGuests(access_code: string) {
         console.log("Getting guests");
-        // return this.http.get<User>(`http://75.172.128.175:7318/guests/${access_code}`);
-        return this.http.get<[Guest]>(`http://192.168.0.34:7318/guests/${access_code}`);
+        return this.http.get<[Guest]>(`${GuestService.rootURL}/guests/${access_code}`);
     }
 
     updateGuests() {
-        // this.http.post(`http://75.172.128.175:7318/guests, this.currentParty.guests).subscribe(data => {
-        this.http.post(`http://192.168.0.34:7318/guests`, this.currentParty.guests).subscribe(data => {
+        this.http.post(`${GuestService.rootURL}/guests`, this.currentParty.guests).subscribe(data => {
             console.log("Updated guests");
         });
     }
