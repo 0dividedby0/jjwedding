@@ -12,8 +12,6 @@
     top: 0px;
 }
 .titleBanner {
-    font-family: Snell Roundhand, cursive, sans-serif;
-    font-size: 100px;
     background: rgba(255,255,255,0.6);
     padding-bottom: 10px;
     display: inline-block;
@@ -24,6 +22,7 @@
     display: inline-block;
     margin-left: 5%;
     margin-right: 5%;
+    font-size: 100px;
 }
 .menuBar {
     text-align: center;
@@ -34,7 +33,7 @@
 }
 .menuButton {
     font-size: 20px;
-    font-family: cursive, sans-serif;
+    font-family: Chancery, cursive;
     border: 2px black solid;
     display: inline-block;
     padding: 10px;
@@ -58,7 +57,6 @@
 .menuItem {
     vertical-align: middle;
     font-size: 25px;
-    font-family: Noto Sans, sans-serif;
     display: inline-block;
     margin-bottom: 15px;
 }

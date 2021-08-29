@@ -1,19 +1,20 @@
 <div class="accountButton" (click)="accountWindowShowing = true">
-    {{currentParty.authenticated ? (currentParty.username[0] + currentParty.username[1]).toUpperCase() : "☃︎"}}
+    {{currentParty.authenticated ? (currentParty.party[0] + currentParty.party[1]).toUpperCase() : "☃︎"}}
 </div>
 <div class="popup" *ngIf="accountWindowShowing">
     <div *ngIf="!currentParty.authenticated">
         <input class="standardInput" type="text" placeholder="Access Code" [(ngModel)]="access_code">
-        <button class="standardButton" (click)="authenticateUser()">Login</button>
+        <button class="standardButton" (click)="authenticateParty()">Login</button>
         <button class="standardButton" (click)="accountWindowShowing = false">Close</button>
     </div>
     <div *ngIf="currentParty.authenticated">
-        <div class="standardText" style="font-weight: bold; font-size: 30px;">Welcome {{currentParty.username}}!</div>
-        <div class="standardText" *ngIf="currentParty.email" style="margin-bottom: 10px; font-family: sans-serif;">{{currentParty.email}}</div>
+        <div class="cursiveText" style="font-weight: bold; font-size: 30px;">Welcome {{currentParty.party}}!</div>
+        <div class="standardText" *ngIf="currentParty.email" style="margin-bottom: 10px;">{{currentParty.email}}</div>
         <button class="standardButton" *ngIf="currentParty.email" (click)="currentParty.email = ''">Change Email</button>
         <div *ngIf="!currentParty.email">
-            <input class="standardInput" type="text" placeholder="Email" [(ngModel)]="email">
+            <input class="standardInput" style="margin-top: 10px;" type="text" placeholder="Email" [(ngModel)]="email">
             <button class="standardButton" (click)="updateEmail()">Submit</button>
+            <div class="standardText" style="margin-bottom: 10px; font-size: 15px;">Please provide an email so that we can contact you with important updates!</div>
         </div>
         <button class="standardButton" (click)="logoutUser()">Logout</button>
         <button class="standardButton" (click)="accountWindowShowing = false">Close</button>

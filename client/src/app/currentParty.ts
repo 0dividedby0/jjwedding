@@ -1,9 +1,16 @@
 import { Injectable } from '@angular/core';
 
+interface Guest {
+    access_code: string;
+    name: string;
+    rsvp: boolean;
+}
+
 @Injectable()
 export class CurrentParty {
     access_code: string = '';
-    username: string = '';
+    party: string = '';
     email: string = '';
     authenticated: number = 0;
+    guests: Array<Guest> = [];
 }

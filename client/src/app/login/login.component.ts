@@ -19,14 +19,14 @@ export class LoginComponent implements OnInit {
         this.access_code = "";
         if (localStorage.getItem("accessCode")) {
             this.access_code = localStorage.getItem("accessCode") || "";
-            this.authenticateUser();
+            this.authenticateParty();
         }
         this.accountWindowShowing = false;
     }
 
-    authenticateUser() {
+    authenticateParty() {
         if (this.access_code.length == 4 && this.access_code.match(/^[0-9a-zA-Z]+$/)){
-            this.guestService.authenticateGuest(this.access_code);
+            this.guestService.authenticateParty(this.access_code);
         }
         else {
             alert("Access codes can only contain 4 letters or numbers");
@@ -34,12 +34,12 @@ export class LoginComponent implements OnInit {
     }
 
     logoutUser() {
-        this.guestService.logoutGuest();
+        this.guestService.logoutParty();
     }
 
     updateEmail() {
         this.guestService.updateParty({email: this.email});
-        this.guestService.authenticateGuest(this.access_code);
+        this.guestService.authenticateParty(this.access_code);
     }
 
     ngOnInit(): void {
