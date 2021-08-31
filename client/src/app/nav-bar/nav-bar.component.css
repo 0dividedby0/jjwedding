@@ -16,6 +16,7 @@
     cursor: pointer;
     text-decoration: none;
     color: black;
+    font-family: Chancery, cursive;
 }
 .menuButton:hover {
     border: 2px navy solid;

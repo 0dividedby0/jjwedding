@@ -4,18 +4,21 @@
     <div class="primaryContent" style="text-align: center;">
         <div *ngIf="currentParty.authenticated">
             <div class="cursiveText" style="font-size: 50px;">{{currentParty.party}}'s Party</div>
-            <div class="standardText">You are invited to the wedding of Jessica Peebles and Jason Halcomb! We look forward to seeing you!</div>
-            <div style="margin-top: 30px;">
-                <div class="rsvpItem standardText" style="width: 400px;">Name</div>
-                <div class="rsvpItem standardText" style="width: 200px; text-align: center;">Delightfully Accept</div>
-                <div class="rsvpItem standardText" style="width: 200px; text-align: center;">Regretfully Decline</div>
+            <div *ngIf="!currentParty.responded">
+                <div class="standardText">You are invited to the wedding of Jessica Peebles and Jason Halcomb! We look forward to seeing you!</div>
+                <div style="margin-top: 30px;">
+                    <div class="rsvpItem standardText" style="width: 400px;">Name</div>
+                    <div class="rsvpItem standardText" style="width: 200px; text-align: center;">Delightfully Accept</div>
+                    <div class="rsvpItem standardText" style="width: 200px; text-align: center;">Regretfully Decline</div>
+                </div>
+                <div *ngFor="let guest of currentParty.guests;" style="margin-top: 10px; margin-bottom: 10px;">
+                    <div class="rsvpItem" style="width: 400px; vertical-align: top;"><input class="standardInput" style="width: 95%;" [(ngModel)]="guest.name"></div>
+                    <div class="rsvpItem" style="width: 200px; text-align: center;"><input type="radio" name="{{guest.guest_id}}RSVP" [(ngModel)]="guest.rsvp" [value]="1"></div>
+                    <div class="rsvpItem" style="width: 200px; text-align: center;"><input type="radio" name="{{guest.guest_id}}RSVP" [(ngModel)]="guest.rsvp" [value]="0"></div>
+                </div>
             </div>
-            <div *ngFor="let guest of currentParty.guests;" style="margin-top: 10px; margin-bottom: 10px;">
-                <div class="rsvpItem" style="width: 400px; vertical-align: top;"><input class="standardInput" style="width: 95%;" [(ngModel)]="guest.name"></div>
-                <div class="rsvpItem" style="width: 200px; text-align: center;"><input type="radio" name="{{guest.guest_id}}RSVP" [(ngModel)]="guest.rsvp" [value]="1"></div>
-                <div class="rsvpItem" style="width: 200px; text-align: center;"><input type="radio" name="{{guest.guest_id}}RSVP" [(ngModel)]="guest.rsvp" [value]="0"></div>
-            </div>
-            <button class="standardButton" (click)="submitRSVP()">Submit</button>
+            <div *ngIf="currentParty.responded" class="subheader" style="margin-bottom: 10px;">Your response has been recorded, thank you!</div>
+            <button class="standardButton" (click)="submitRSVP()">{{currentParty.responded ? "Change Response" : "Submit"}}</button>
         </div>
         <div *ngIf="!currentParty.authenticated" class="standardText" style="font-size: 30px;">Please log in to RSVP<br>(click on the button in the top right corner of the page)</div>
     </div>

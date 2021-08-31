@@ -17,11 +17,14 @@ export class LoginComponent implements OnInit {
         this.currentParty = currentParty;
         this.email = "";
         this.access_code = "";
+        this.accountWindowShowing = false;
         if (localStorage.getItem("accessCode")) {
             this.access_code = localStorage.getItem("accessCode") || "";
             this.authenticateParty();
         }
-        this.accountWindowShowing = false;
+        else {
+            this.accountWindowShowing = true;
+        }
     }
 
     authenticateParty() {

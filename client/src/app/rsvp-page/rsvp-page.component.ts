@@ -2,12 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { GuestService } from '../guest.service';
 import { CurrentParty } from '../currentParty';
 
-interface Guest {
-    access_code: string;
-    name: string;
-    rsvp: boolean;
-}
-
 @Component({
   selector: 'app-rsvp-page',
   templateUrl: './rsvp-page.component.html',
@@ -22,7 +16,14 @@ export class RsvpPageComponent implements OnInit {
     }
 
     submitRSVP() {
-        this.guestService.updateGuests();
+        console.log(`Updating RSVP: ${this.currentParty.responded}`);
+        if (this.currentParty.responded){
+            this.guestService.updateParty({responded: 0});
+        }
+        else {
+            this.guestService.updateGuests();
+            this.guestService.updateParty({responded: 1});
+        }
     }
 
     ngOnInit(): void {

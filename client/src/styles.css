@@ -24,11 +24,13 @@ html, body, app-root {
     font-size: 40px;
     font-weight: bold;
     text-decoration: underline;
+    font-family: Arial, Helvetica, sans-serif;
 }
 .primaryContent {
     padding-left: 80px;
     padding-right: 80px;
     font-size: 20px;
+    font-family: Arial, Helvetica, sans-serif;
 }
 .standardInput {
     font-size: 20px;

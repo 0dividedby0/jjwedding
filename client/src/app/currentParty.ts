@@ -12,6 +12,7 @@ export class CurrentParty {
     access_code: string = '';
     party: string = '';
     email: string = '';
+    responded: boolean = false;
     authenticated: number = 0;
     guests: Array<Guest> = [];
 }
