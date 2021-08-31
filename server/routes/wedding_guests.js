@@ -13,7 +13,8 @@ router.get('/party/:access_code', function(req, res) {
             res.send({
                 access_code: results[0].access_code,
                 email: results[0].email,
-                party: results[0].party
+                party: results[0].party,
+                responded: results[0].responded
             });
         }
     });
@@ -21,11 +22,28 @@ router.get('/party/:access_code', function(req, res) {
 /* POST party email */
 router.post('/party/:access_code', function(req, res) {
     console.log(req.body);
-    database.query(`update parties set email = "${req.body.email}" where access_code = "${req.params.access_code}"`, function (error, results, fields) {
-        if (error) {
-            console.log(error);
-        }
-    });
+    if ("email" in req.body){
+        database.query(`update parties set email = "${req.body.email}" where access_code = "${req.params.access_code}"`, function (error, results, fields) {
+            if (error) {
+                console.log(error);
+            }
+            else {
+                console.log(results);
+                res.send(results);
+            }
+        });
+    }
+    if ("responded" in req.body){
+        database.query(`update parties set responded = ${req.body.responded} where access_code = "${req.params.access_code}"`, function (error, results, fields) {
+            if (error) {
+                console.log(error);
+            }
+            else {
+                console.log(results);
+                res.send(results);
+            }
+        });
+    }
 });
 /* GET guests */
 router.get('/guests/:party_access_code', function(req, res) {
@@ -40,13 +58,17 @@ router.get('/guests/:party_access_code', function(req, res) {
         }
     });
 });
-/* POST party email */
+/* POST guests */
 router.post('/guests', function(req, res) {
     console.log(req.body);
     req.body.forEach(guest => {
         database.query(`update guests set rsvp = ${guest.rsvp}, name = "${guest.name}" where guest_id = "${guest.guest_id}"`, function (error, results, fields) {
             if (error) {
                 console.log(error);
+            }
+            else {
+                console.log(results);
+                res.send(results);
             }
         });
     });
