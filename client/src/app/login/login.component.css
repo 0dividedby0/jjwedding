@@ -12,6 +12,7 @@
     font-size: initial;
     font-family: Chancery, cursive;
     cursor: pointer;
+    z-index: 100;
 }
 .popup {
     background-color: rgb(254,251,247);
@@ -22,4 +23,5 @@
     padding: 20px;
     text-align: center;
     box-shadow: 2px 2px;
+    z-index: 100;
 }

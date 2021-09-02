@@ -19,7 +19,7 @@ interface Guest {
     providedIn: 'root'
 })
 export class GuestService {
-    static prod = false;
+    static prod = true;
     static rootURL: string = GuestService.prod ? "http://75.172.128.175:7318" : "http://192.168.0.34:7318";
 
     authenticateParty(access_code: string): void {
