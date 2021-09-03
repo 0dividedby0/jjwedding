@@ -22,3 +22,16 @@
     background-repeat: no-repeat;
     background-size: contain;
 }
+.welcomeText {
+    font-size: 50px;
+    position: relative;
+}
+@media (max-width: 1000px) {
+    .sideBlinder {
+        display: none;
+    }
+    .welcomeText{
+        font-size: 30px;
+        margin-bottom: 20px;
+    }
+}

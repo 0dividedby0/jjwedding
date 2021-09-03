@@ -3,7 +3,7 @@
     <app-nav-bar title="RSVP"></app-nav-bar>
     <div class="primaryContent" style="text-align: center;">
         <div *ngIf="currentParty.authenticated">
-            <div class="cursiveText" style="font-size: 80px;">{{currentParty.party}}</div>
+            <div class="partyName cursiveText">{{currentParty.party}}</div>
             <div *ngIf="!currentParty.responded">
                 <div class="standardText">You are invited to the wedding of Jessica Peebles and Jason Halcomb! We look forward to seeing you!</div>
                 <div style="margin-top: 30px;">

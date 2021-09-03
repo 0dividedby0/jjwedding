@@ -29,3 +29,19 @@ input[type='radio'] {
 input[type='radio']:checked {
     background: #abd;
 }
+.partyName {
+    font-size: 80px;
+}
+@media (max-width: 1000px) {
+    .partyName {
+        font-size: 50px;
+        margin-left: 25px;
+    }
+    .subheader {
+        font-size: 20px;
+    }
+    .rsvpItem {
+        margin: 0px;
+        max-width: 33%;
+    }
+}

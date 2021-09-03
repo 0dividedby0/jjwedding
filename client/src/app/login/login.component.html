@@ -1,5 +1,6 @@
 <div class="accountButton" (click)="accountWindowShowing = true">
-    {{currentParty.authenticated ? (currentParty.party[0] + currentParty.party[1]).toUpperCase() : "☃︎"}}
+    <div *ngIf="currentParty.authenticated">{{(currentParty.party[0] + currentParty.party[1]).toUpperCase()}}</div>
+    <img *ngIf="!currentParty.authenticated" style="width: 75%; height: 75%; margin-top: 2px;" src="images/profile.png">
 </div>
 <div class="popup" *ngIf="accountWindowShowing">
     <div *ngIf="!currentParty.authenticated">

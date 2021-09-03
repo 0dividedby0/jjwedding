@@ -8,8 +8,15 @@ import { Component, OnInit, Input } from '@angular/core';
 export class NavBarComponent implements OnInit {
 
   @Input() title!: String;
+  menuShowing: boolean;
 
-  constructor() { }
+  constructor() {
+    this.menuShowing = false;
+  }
+
+  toggleMenu() {
+    this.menuShowing = !this.menuShowing;
+  }
 
   ngOnInit(): void {
   }

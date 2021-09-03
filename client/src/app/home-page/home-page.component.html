@@ -1,9 +1,15 @@
 <div class="bg" style="background-image: url('images/engagement.jpg');">
     <img *ngIf="fireworksShowing" [@fireworkAnimation]="fireworksShowing ? 'fireworksIn': 'fireworksOut'" class="fireworks" src="images/fireworks.gif"/>
     <div class="titleBanner">
+        <!-- Standard -->
         <span class="menuItem standardText">July 2, 2022</span>
         <div class="title cursiveText">{{title}}</div>
         <span class="menuItem standardText">Woodland, WA</span>
+        <!-- Mobile -->
+        <div style="width: 320px; text-align: center;">
+            <div class="title-mobile cursiveText">{{title}}</div>
+            <span class="menuItem-mobile standardText">July 2, 2022 &nbsp;&nbsp;-&nbsp;&nbsp; Woodland, WA</span>
+        </div>
     </div>
     <div class="menuBar">
         <a class="menuButton" href="story">Our Story</a>

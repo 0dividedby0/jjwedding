@@ -1,4 +1,6 @@
 <div class="menuBar">
+    <img src="images/hamburgerMenu.png" class="menu-mobile-button" (click)="toggleMenu()">
+    <a class="menuItem-mobile cursiveText" href="home">Jason & Jessica</a>
     <div class="menuButtonGroup">
         <a class="menuButton" href="story">Our Story</a>
         <a class="menuButton" href="wedding">Our Wedding</a>
@@ -6,9 +8,16 @@
         <a class="menuButton" href="travel">Travel</a>
         <a class="menuButton" href="registry">Registry</a>
     </div>
-    <a class="menuItem cursiveText" href="home">Jason and Jessica</a>
+    <a class="menuItem cursiveText" href="home">Jason & Jessica</a>
+    <div *ngIf="menuShowing" class="menu-mobile">
+        <a class="menuButton" href="story">Our Story</a>
+        <a class="menuButton" href="wedding">Our Wedding</a>
+        <a class="menuButton" href="rsvp">RSVP</a>
+        <a class="menuButton" href="travel">Travel</a>
+        <a class="menuButton" href="registry">Registry</a>
+    </div>
 </div>
-<img src="images/cornerFlowers.png" style="float: left; transform: scaleX(-1); height: 300px; margin-bottom: -150px; width: 45%;">
-<img src="images/cornerFlowers.png" style="float: right; height: 300px; margin-bottom: -150px; width: 45%;">
+<img src="images/cornerFlowers.png" class="flowersLeft">
+<img src="images/cornerFlowers.png" class="flowersRight">
 <div class="pageTitle standardText">{{title}}</div>
 <hr style="width: 95%;">
