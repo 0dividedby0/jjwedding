@@ -61,17 +61,19 @@ router.get('/guests/:party_access_code', function(req, res) {
 /* POST guests */
 router.post('/guests', function(req, res) {
     console.log(req.body);
+    var success = true;
     req.body.forEach(guest => {
         database.query(`update guests set rsvp = ${guest.rsvp}, name = "${guest.name}" where guest_id = "${guest.guest_id}"`, function (error, results, fields) {
             if (error) {
                 console.log(error);
+                success = false;
             }
             else {
                 console.log(results);
-                res.send(results);
             }
         });
     });
+    res.send(success ? "Success" : "Failed to post guests");
 });
 
 module.exports = router;
