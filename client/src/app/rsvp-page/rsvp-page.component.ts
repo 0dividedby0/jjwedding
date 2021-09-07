@@ -1,6 +1,20 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 import { GuestService } from '../guest.service';
 import { CurrentParty } from '../currentParty';
+
+interface Party {
+    access_code: string;
+    email: string;
+    party: string;
+    responded: boolean;
+    admin: boolean;
+}
+interface Guest {
+    access_code: string;
+    name: string;
+    rsvp: boolean;
+    guest_id: number;
+}
 
 @Component({
   selector: 'app-rsvp-page',
@@ -10,9 +24,26 @@ import { CurrentParty } from '../currentParty';
 export class RsvpPageComponent implements OnInit {
 
     currentParty: CurrentParty;
+    adminData: { [key: string]: {party: Party, guests: [Guest?]} } = {};
 
     constructor(private guestService: GuestService, currentParty: CurrentParty) {
+        guestService.authenticationChanged$.subscribe(authenticated => {
+            if (authenticated){
+                this.guestService.getAllPartiesAndGuests()?.subscribe((data: {parties: [Party], guests: [Guest]}) => {
+                    this.updateAdminData(data);
+                });
+            }
+        });
         this.currentParty = currentParty;
+    }
+
+    updateAdminData(data: {parties: [Party], guests: [Guest]}) {
+        data.parties.forEach(party => {
+            this.adminData[party.access_code] = {party: party, guests: []};
+        });
+        data.guests.forEach(guest => {
+            this.adminData[guest.access_code].guests.push(guest);
+        });
     }
 
     submitRSVP() {

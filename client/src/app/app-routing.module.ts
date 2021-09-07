@@ -6,7 +6,7 @@ import { WeddingPageComponent } from './wedding-page/wedding-page.component';
 import { RsvpPageComponent } from './rsvp-page/rsvp-page.component';
 import { TravelPageComponent } from './travel-page/travel-page.component';
 import { RegistryPageComponent } from './registry-page/registry-page.component';
-
+import { CommunityPageComponent } from './community-page/community-page.component';
 const routes: Routes = [
   { path: '', component: HomePageComponent },
   { path: 'home', component: HomePageComponent },
@@ -15,6 +15,7 @@ const routes: Routes = [
   { path: 'rsvp', component: RsvpPageComponent },
   { path: 'travel', component: TravelPageComponent },
   { path: 'registry', component: RegistryPageComponent },
+  { path: 'community', component: CommunityPageComponent },
 ];
 
 @NgModule({

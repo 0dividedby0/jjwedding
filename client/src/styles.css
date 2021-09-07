@@ -58,7 +58,7 @@ html, body, app-root {
     font-size: 20px;
     font-family: Snell, cursive;
 }
-@media (max-width: 1000px) {
+@media (max-width: 1150px) {
     .primaryContent {
         padding-left: 20px;
         padding-right: 20px;

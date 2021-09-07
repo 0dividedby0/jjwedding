@@ -16,7 +16,7 @@
 }
 .popup {
     background-color: rgb(254,251,247);
-    position: absolute;
+    position: fixed;
     top: calc(50% - 110px);
     left: calc(50% - 235px);
     border-radius: 20px;

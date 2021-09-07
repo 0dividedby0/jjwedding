@@ -1,0 +1,20 @@
+<div class="bg" style="background-color: antiquewhite;"></div>
+<div class="pageContent">
+    <app-nav-bar title="Community"></app-nav-bar>
+    <div class="primaryContent">
+        <div class="subheader">Coming Soon!</div>
+        <div style="display: none;">
+            <div *ngIf="currentParty.authenticated">
+                <div class="music" style="margin-top: 20px; width: 45%; text-align: center;">
+                    <div style="margin-bottom: 10px;">
+                        <input class="standardInput" style="width: calc(100% - 200px);" placeholder="Suggest Song!">
+                        <button class="standardButton">Suggest</button>
+                    </div>
+                    <iframe allow="autoplay *; encrypted-media *; fullscreen *" frameborder="0" height="450" style="width:100%;max-width:660px;overflow:hidden;background:transparent;" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation" src="https://embed.music.apple.com/us/playlist/wedding/pl.u-zPyLl4vTxYdRk7"></iframe>
+                </div>
+            </div>
+            <div *ngIf="!currentParty.authenticated" class="standardText" style="font-size: 30px; text-align: center;">Please log in to view community content!</div>
+        </div>
+    </div>
+    <app-login></app-login>
+</div>

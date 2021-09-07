@@ -13,6 +13,7 @@ export class CurrentParty {
     party: string = '';
     email: string = '';
     responded: boolean = false;
-    authenticated: number = 0;
+    admin: boolean = false;
+    authenticated: boolean = false;
     guests: Array<Guest> = [];
 }

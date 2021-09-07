@@ -15,6 +15,8 @@ import { TravelPageComponent } from './travel-page/travel-page.component';
 import { RegistryPageComponent } from './registry-page/registry-page.component';
 import { LoginComponent } from './login/login.component';
 import { CurrentParty } from './currentParty';
+import { CountdownComponent } from './countdown/countdown.component';
+import { CommunityPageComponent } from './community-page/community-page.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +28,9 @@ import { CurrentParty } from './currentParty';
     RsvpPageComponent,
     TravelPageComponent,
     RegistryPageComponent,
-    LoginComponent
+    LoginComponent,
+    CountdownComponent,
+    CommunityPageComponent
   ],
   imports: [
     BrowserModule,

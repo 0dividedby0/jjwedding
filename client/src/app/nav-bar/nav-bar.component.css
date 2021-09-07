@@ -65,7 +65,7 @@
     margin-bottom: -150px;
     width: 45%;
 }
-@media (max-width: 1000px) {
+@media (max-width: 1150px) {
     .menuItem {
         display: none;
     }

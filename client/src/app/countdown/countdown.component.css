@@ -1,0 +1,13 @@
+.timer {
+    text-align: center;
+    font-family: Chancery, cursive;
+    font-size: 1.4em;
+    letter-spacing: -1px;
+  }
+  .timer span {
+    font-size: 2em;
+    margin: 0 5px 0 15px;
+    width: 75px;
+    display: inline-block;
+    text-align: right;
+  }
