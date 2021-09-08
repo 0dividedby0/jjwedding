@@ -13,3 +13,21 @@
     top: 0px;
     left: 0px;
 }
+.instagram {
+    float: right;
+    width: 48%;
+    text-align: center;
+}
+.music {
+    float: left;
+    margin-top: 20px;
+    width: 48%;
+    text-align: center;
+}
+.contactInfo {
+    float: right;
+    margin-top: 20px;
+    margin-bottom: 4%;
+    width: 48%;
+    text-align: center;
+}

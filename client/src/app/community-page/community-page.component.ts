@@ -15,6 +15,10 @@ export class CommunityPageComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    let instagramScript = document.createElement('script');
+    instagramScript.async = true;
+    instagramScript.src = 'https://cdn.curator.io/published/96f1597c-9708-41da-be09-7253bffe4ed4.js';
+    document.getElementById('instagram')!.appendChild(instagramScript);
   }
 
 }

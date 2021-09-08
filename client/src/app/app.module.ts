@@ -17,6 +17,7 @@ import { LoginComponent } from './login/login.component';
 import { CurrentParty } from './currentParty';
 import { CountdownComponent } from './countdown/countdown.component';
 import { CommunityPageComponent } from './community-page/community-page.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { CommunityPageComponent } from './community-page/community-page.componen
     RegistryPageComponent,
     LoginComponent,
     CountdownComponent,
-    CommunityPageComponent
+    CommunityPageComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
