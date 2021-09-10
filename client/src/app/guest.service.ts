@@ -16,6 +16,13 @@ interface Guest {
     rsvp: boolean;
     guest_id: number;
 }
+interface Comment {
+    author: string;
+    message: string;
+    time: string;
+    system_message: boolean;
+    id: number;
+}
 
 @Injectable({
     providedIn: 'root'
@@ -82,6 +89,21 @@ export class GuestService {
     getAllPartiesAndGuests() {
         if (this.currentParty.admin) return this.http.get<{parties: [Party], guests: [Guest]}>(`${GuestService.rootURL}/admin/${this.currentParty.access_code}`);
         else return null;
+    }
+
+    getAllComments() {
+        console.log("Getting all comments");
+        return this.http.get<[Comment]>(`${GuestService.rootURL}/comments`);
+    }
+
+    postComment(comment: Comment) {
+        console.log("Posting comment");
+        return this.http.post(`${GuestService.rootURL}/comments`, comment);
+    }
+
+    deleteComment(id: number) {
+        console.log("Deleting comment");
+        return this.http.get(`${GuestService.rootURL}/comments/delete/${id}`);
     }
 
     constructor(private http: HttpClient, private currentParty: CurrentParty) { }

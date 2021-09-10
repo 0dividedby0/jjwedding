@@ -24,6 +24,8 @@ interface Guest {
 export class RsvpPageComponent implements OnInit {
 
     currentParty: CurrentParty;
+    suggestedSong: string;
+    userComment: string; 
     adminData: { [key: string]: {party: Party, guests: [Guest?]} } = {};
 
     constructor(private guestService: GuestService, currentParty: CurrentParty) {
@@ -35,6 +37,8 @@ export class RsvpPageComponent implements OnInit {
             }
         });
         this.currentParty = currentParty;
+        this.suggestedSong = "";
+        this.userComment = "";
     }
 
     updateAdminData(data: {parties: [Party], guests: [Guest]}) {
@@ -57,6 +61,42 @@ export class RsvpPageComponent implements OnInit {
                 if (guest.name.match(/"\+[0-9]"/g)) alertString += `Please provide a name for ${guest.name}!\n`;
                 else if (!guest.name.match(/^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]+$/u)) alertString += `Please provide a different name for "${guest.name}"!\n- No special characters (&,#,@,etc.)\n`
             });
+            if (this.suggestedSong != "") { 
+                if (!this.suggestedSong.match(/^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.!?&'-]+$/u)) {
+                    alertString += `Invalid song name "${this.suggestedSong}"!\n- No special characters (&,#,@,etc.)\n`;
+                }
+                else {
+                    var currentDate = new Date();
+                    this.guestService.postComment({
+                        author: this.currentParty.party, 
+                        message: `Song suggestion: ${this.suggestedSong}!`, 
+                        time: `${currentDate.getMonth()+1}/${currentDate.getDate()}/${currentDate.getFullYear()}`, 
+                        system_message: true,
+                        id: -1
+                    })
+                    .subscribe(data => {
+                        console.log("Posted comment");
+                    });
+                }
+            }
+            if (this.userComment != "") { 
+                if (!this.userComment.match(/^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.!?&'-]+$/u)) {
+                    alertString += `Invalid comment "${this.userComment}"!\n- No special characters (*,#,@,etc.)\n`;
+                }
+                else {
+                    var currentDate = new Date();
+                    this.guestService.postComment({
+                        author: this.currentParty.party, 
+                        message: this.userComment, 
+                        time: `${currentDate.getMonth()+1}/${currentDate.getDate()}/${currentDate.getFullYear()}`, 
+                        system_message: false,
+                        id: -1
+                    })
+                    .subscribe(data => {
+                        console.log("Posted comment");
+                    });
+                }
+            }
             if (alertString.length > 0){
                 alert(alertString);
                 return;

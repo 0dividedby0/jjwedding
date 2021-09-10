@@ -13,21 +13,33 @@
     top: 0px;
     left: 0px;
 }
-.instagram {
-    float: right;
-    width: 48%;
-    text-align: center;
-}
-.music {
+.leftCommunityGroup {
     float: left;
-    margin-top: 20px;
     width: 48%;
-    text-align: center;
 }
-.contactInfo {
+.rightCommunityGroup {
     float: right;
-    margin-top: 20px;
-    margin-bottom: 4%;
     width: 48%;
+}
+.communityItem {
     text-align: center;
+    width: 100%;
+    margin-top: 40px;
+}
+.deleteButton {
+    float: right;
+    font-size: 13px;
+    font-family: Arial, Helvetica, sans-serif;
+    width: 29px;
+    margin-left: 0px;
+}
+@media (max-width: 700px) {
+    .leftCommunityGroup {
+        width: 100%;
+        float: none;
+    }
+    .rightCommunityGroup {
+        width: 100%;
+        float: none;
+    }
 }

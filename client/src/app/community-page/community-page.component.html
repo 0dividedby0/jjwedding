@@ -2,30 +2,52 @@
 <div class="pageContent">
     <app-nav-bar title="Community"></app-nav-bar>
     <div class="primaryContent">
-        <!-- <div class="subheader">Coming Soon!</div> -->
-        <div>
-            <div [hidden]="!currentParty.authenticated">
-                <div class="music">
-                    <div class="subheader" style="margin-bottom: 10px;">Music</div>
-                    <div style="margin-bottom: 10px;">
-                        <input class="standardInput" style="width: calc(100% - 200px);" placeholder="Suggest Song!">
-                        <button class="standardButton">Suggest</button>
-                    </div>
-                    <iframe allow="autoplay *; encrypted-media *; fullscreen *" frameborder="0" height="450" style="width:100%;max-width:660px;overflow:hidden;background:transparent;" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation" src="https://embed.music.apple.com/us/playlist/wedding/pl.u-zPyLl4vTxYdRk7"></iframe>
-                </div>
-                <div class="contactInfo">
+        <div [hidden]="!currentParty.authenticated">
+            <div class="rightCommunityGroup">
+                <div class="communityItem">
                     <div class="subheader" style="margin-bottom: 10px;">Contact</div>
-                    <div class="standardText">Please feel free to reach out with any questions or comments!</div>
-                    <div class="standardText" style="margin-top: 10px; font-weight: bold;">Email: jjwedding0703@gmail.com</div>
+                    <div class="standardText" style="margin-bottom: 10px;">Please feel free to reach out with any questions or comments!</div>
+                    <div class="standardText" style="font-weight: bold;">Email: jjwedding0703@gmail.com</div>
                 </div>
-                <div class="instagram" id="instagram">
+                <div class="communityItem" id="instagram">
                     <a style="color: inherit;" href="https://www.instagram.com/jjwedding0703/"><div class="subheader" style="margin-bottom: 10px; vertical-align: bottom; display: inline-block;">Instagram</div></a>
                     <a href="https://www.instagram.com/jjwedding0703/"><img src="images/instagram.png" style="width: 50px; height: 50px; display: inline-block; margin-left: 15px;"></a>
+                    <div class="standardText" style="margin-bottom: 10px;">Click above for our official instagram or just browse some of our stories below!</div>
                     <div id="curator-feed-default-feed-layout"><a href="https://curator.io" target="_blank" class="crt-logo crt-tag">Powered by Curator.io</a></div>
                 </div>
             </div>
-            <div *ngIf="!currentParty.authenticated" class="standardText" style="font-size: 30px; text-align: center;">Please log in to view community content!</div>
+            <div class="leftCommunityGroup">
+                <div class="communityItem">
+                    <div class="subheader" style="margin-bottom: 10px;">Music</div>
+                    <div class="standardText" style="margin-bottom: 10px;">Recommend a wedding song that you like and see some of our favorites!</div>
+                    <div style="margin-bottom: 10px;">
+                        <input class="standardInput" style="width: calc(100% - 200px);" [(ngModel)]="suggestedSong" placeholder="Suggest Song!">
+                        <button class="standardButton" (click)="suggestSong()">Suggest</button>
+                    </div>
+                    <iframe allow="autoplay *; encrypted-media *; fullscreen *" frameborder="0" height="450" style="width:100%; max-width:660px; overflow:hidden; background:transparent;" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation" src="https://embed.music.apple.com/us/playlist/wedding/pl.u-zPyLl4vTxYdRk7"></iframe>
+                </div>
+                <div class="communityItem">
+                    <div class="subheader" style="margin-bottom: 10px;">Comment Board</div>
+                    <div class="standardText" style="margin-bottom: 10px;">Leave a note for us and the rest of our guests, we'd love to hear from you! Please use email for questions!</div>
+                    <input class="standardInput" style="width: calc(100% - 200px); margin-bottom: 20px;" [(ngModel)]="userComment" placeholder="Leave us a message!">
+                    <button class="standardButton" style="margin-bottom: 20px;" (click)="submitComment()">Submit</button>
+                    <div *ngFor="let comment of comments.slice().reverse()" style="text-align: left; margin-bottom: 10px;">
+                        <div *ngIf="comment!.system_message" style="padding-left: 15px;">
+                            <div class="standardText" style="font-size: 15px; color: grey; display: inline-block; width: calc(100% - 35px);">{{comment!.message}}</div>
+                            <button class="standardButton deleteButton" *ngIf="currentParty.admin || currentParty.party == comment!.author" (click)="deleteComment(comment!.id)">X</button>
+                        </div>
+                        <div *ngIf="!comment!.system_message" style="background-color: white; padding: 15px; margin-bottom: 10px; border-radius: 10px;">
+                            <div style="display: inline-block; width: calc(100% - 35px);">
+                                <div class="standardText">{{comment!.message}}</div>
+                                <div class="standardText" style="font-size: 15px; color: grey;">{{comment!.author}} - {{comment!.time}}</div>
+                            </div>
+                            <button class="standardButton deleteButton" *ngIf="currentParty.admin || currentParty.party == comment!.author" (click)="deleteComment(comment!.id)">X</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
+        <div *ngIf="!currentParty.authenticated" class="standardText" style="font-size: 30px; text-align: center;">Please log in to view community content!</div>
     </div>
     <app-login></app-login>
     <app-footer></app-footer>
