@@ -1,7 +1,7 @@
 .menuBar {
     width: 100%;
     font-size: 20px;
-    background: rgba(255,255,255,0.6);
+    background: rgba(255,255,255,0.9);
     position: fixed;
     z-index: 50;
 }
@@ -98,7 +98,7 @@
     .menu-mobile {
         margin-top: 19px;
         width: 100%;
-        background: rgba(255,255,255,0.6);
+        background: rgba(255,255,255,0.9);
         padding-bottom: 5px;
     }
     .flowersLeft {

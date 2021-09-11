@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { GuestService } from '../guest.service';
 import { CurrentParty } from '../currentParty';
+import {} from 'googlemaps';
 
 interface Comment {
   author: string;
@@ -8,6 +9,12 @@ interface Comment {
   time: string;
   system_message: boolean;
   id: number;
+}
+interface Pin {
+  access_code: string;
+  zip: string;
+  lat: number;
+  lng: number
 }
 
 @Component({
@@ -20,12 +27,66 @@ export class CommunityPageComponent implements OnInit {
   currentParty: CurrentParty;
   suggestedSong: string;
   userComment: string;
+  userZipCode: string;
+  map?: google.maps.Map;
+  pins: [google.maps.Marker?] = [];
+  center = { lat: 39.5, lng: -97.5 };
   comments: [Comment?] = [];
 
   constructor(private guestService: GuestService, currentParty: CurrentParty) {
     this.currentParty = currentParty;
     this.suggestedSong = "";
     this.userComment = "";
+    this.userZipCode = "";
+  }
+
+  getPins() {
+    this.guestService.getAllPins().subscribe((data: [Pin]) => {
+      this.pins.forEach(pin => {
+        pin!.setMap(null);
+      });
+      this.pins = [];
+      data.forEach(pin => {
+        this.pins.push(new google.maps.Marker({ position: {lat: pin.lat, lng: pin.lng}, map: this.map }))
+      });
+    });
+  }
+
+  initMap() {
+    this.map = new google.maps.Map(
+      document.getElementById("map") as HTMLElement,
+      {
+        zoom: 4,
+        center: this.center,
+      }
+    );
+    this.getPins();
+  }
+
+  addPin() {
+    if (this.userZipCode.match(/(^\d{5}$)|(^\d{5}-\d{4}$)/)) {
+      var geocoder = new google.maps.Geocoder();
+
+      geocoder.geocode( { 'address': this.userZipCode }, (results, status) => {
+        if (status == google.maps.GeocoderStatus.OK) {
+          console.log(`${results[0].geometry.location.lat}, ${results[0].geometry.location.lng}`);
+          this.guestService.postPin({
+            access_code: this.currentParty.access_code, 
+            zip: this.userZipCode,
+            lat: results[0].geometry.location.lat(),
+            lng: results[0].geometry.location.lng()
+          }).subscribe(data => {
+            console.log("Posted pin");
+            this.getPins();
+          });
+        } else {
+          alert("Geocode was not successful for the following reason: " + status);
+        }
+      });
+    }
+    else {
+      alert(`Invalid zipcode "${this.userZipCode}"!`);
+    }
   }
 
   getComments() {
@@ -90,6 +151,7 @@ export class CommunityPageComponent implements OnInit {
     instagramScript.src = 'https://cdn.curator.io/published/96f1597c-9708-41da-be09-7253bffe4ed4.js';
     document.getElementById('instagram')!.appendChild(instagramScript);
 
+    this.initMap();
     this.getComments();
   }
 

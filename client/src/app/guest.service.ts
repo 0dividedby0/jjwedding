@@ -23,6 +23,12 @@ interface Comment {
     system_message: boolean;
     id: number;
 }
+interface Pin {
+    access_code: string;
+    zip: string;
+    lat: number;
+    lng: number
+}
 
 @Injectable({
     providedIn: 'root'
@@ -104,6 +110,16 @@ export class GuestService {
     deleteComment(id: number) {
         console.log("Deleting comment");
         return this.http.get(`${GuestService.rootURL}/comments/delete/${id}`);
+    }
+
+    postPin(pin: Pin) {
+        console.log("Posting pin");
+        return this.http.post(`${GuestService.rootURL}/pins`, pin);
+    }
+
+    getAllPins() {
+        console.log("Getting all pins");
+        return this.http.get<[Pin]>(`${GuestService.rootURL}/pins`);
     }
 
     constructor(private http: HttpClient, private currentParty: CurrentParty) { }

@@ -1,6 +1,8 @@
 import { Component, OnInit, HostListener } from '@angular/core';
+import { Observable } from 'rxjs';
 import { GuestService } from '../guest.service';
 import { CurrentParty } from '../currentParty';
+import {} from 'googlemaps';
 
 interface Party {
     access_code: string;
@@ -26,7 +28,22 @@ export class RsvpPageComponent implements OnInit {
     currentParty: CurrentParty;
     suggestedSong: string;
     userComment: string; 
+    userZipCode: string;
+    warningPopupShowing: boolean = false;
     adminData: { [key: string]: {party: Party, guests: [Guest?]} } = {};
+
+    canDeactivate(): Observable<boolean> | boolean {
+        if (this.currentParty.responded) return true;
+        this.warningPopupShowing = true;
+        return false;
+    }
+
+    @HostListener('window:beforeunload', ['$event'])
+    unloadNotification($event: any) {
+        if (!this.canDeactivate()) {
+            $event.returnValue = "Your response has not been recorded! Please press 'Submit' to record your response!";
+        }
+    }
 
     constructor(private guestService: GuestService, currentParty: CurrentParty) {
         guestService.authenticationChanged$.subscribe(authenticated => {
@@ -39,6 +56,7 @@ export class RsvpPageComponent implements OnInit {
         this.currentParty = currentParty;
         this.suggestedSong = "";
         this.userComment = "";
+        this.userZipCode = "";
     }
 
     updateAdminData(data: {parties: [Party], guests: [Guest]}) {
@@ -95,6 +113,30 @@ export class RsvpPageComponent implements OnInit {
                     .subscribe(data => {
                         console.log("Posted comment");
                     });
+                }
+            }
+            if (this.userZipCode != "") {
+                if (!this.userZipCode.match(/(^\d{5}$)|(^\d{5}-\d{4}$)/)) {
+                    alertString += `Invalid zipcode "${this.userZipCode}"!`;
+                }
+                else {
+                    var geocoder = new google.maps.Geocoder();
+
+                geocoder.geocode( { 'address': this.userZipCode }, (results, status) => {
+                    if (status == google.maps.GeocoderStatus.OK) {
+                        console.log(`${results[0].geometry.location.lat}, ${results[0].geometry.location.lng}`);
+                        this.guestService.postPin({
+                            access_code: this.currentParty.access_code, 
+                            zip: this.userZipCode,
+                            lat: results[0].geometry.location.lat(),
+                            lng: results[0].geometry.location.lng()
+                        }).subscribe(data => {
+                            console.log("Posted pin");
+                        });
+                    } else {
+                        alert("Geocode was not successful for the following reason: " + status);
+                    }
+                });
                 }
             }
             if (alertString.length > 0){

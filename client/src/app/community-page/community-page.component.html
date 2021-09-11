@@ -12,11 +12,20 @@
                 <div class="communityItem" id="instagram">
                     <a style="color: inherit;" href="https://www.instagram.com/jjwedding0703/"><div class="subheader" style="margin-bottom: 10px; vertical-align: bottom; display: inline-block;">Instagram</div></a>
                     <a href="https://www.instagram.com/jjwedding0703/"><img src="images/instagram.png" style="width: 50px; height: 50px; display: inline-block; margin-left: 15px;"></a>
-                    <div class="standardText" style="margin-bottom: 10px;">Click above for our official instagram or just browse some of our stories below!</div>
+                    <div class="standardText" style="margin-bottom: 10px;">Follow us on instagram for fun stories and planning updates or just browse some of our stories below!</div>
                     <div id="curator-feed-default-feed-layout"><a href="https://curator.io" target="_blank" class="crt-logo crt-tag">Powered by Curator.io</a></div>
                 </div>
             </div>
             <div class="leftCommunityGroup">
+                <div class="communityItem" id="mapContainer">
+                    <div class="subheader" style="margin-bottom: 10px;">Map</div>
+                    <div class="standardText" style="margin-bottom: 10px;">Tell us where you are from and see where our guests are from!</div>
+                    <div style="margin-bottom: 10px;">
+                        <input class="standardInput" style="width: calc(100% - 200px);" [(ngModel)]="userZipCode" placeholder="Zip Code">
+                        <button class="standardButton" (click)="addPin()">Add Pin</button>
+                    </div>
+                    <div id="map"></div>
+                </div>
                 <div class="communityItem">
                     <div class="subheader" style="margin-bottom: 10px;">Music</div>
                     <div class="standardText" style="margin-bottom: 10px;">Recommend a wedding song that you like and see some of our favorites!</div>
