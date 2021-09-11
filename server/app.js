@@ -8,6 +8,7 @@ var adminRouter = require('./routes/admin.js');
 var partyRouter = require('./routes/party.js');
 var guestsRouter = require('./routes/guests.js');
 var commentsRouter = require('./routes/comments.js');
+var pinsRouter = require('./routes/pins.js');
 
 var app = express();
 
@@ -25,6 +26,7 @@ app.use('/admin', adminRouter);
 app.use('/party', partyRouter);
 app.use('/guests', guestsRouter);
 app.use('/comments', commentsRouter);
+app.use('/pins', pinsRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
