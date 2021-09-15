@@ -2,9 +2,18 @@
 <div class="pageContent">
     <app-nav-bar title="Our Story"></app-nav-bar>
     <div class="primaryContent">
-        <div class="subheader">Coming Soon!</div>
+            <div class="timelineItem" *ngFor="let item of timelineItems">
+            <div class="timelinePhoto">
+                <img src="images/story/{{item.image}}">
+            </div> 
+            <div class="timelineCaption">
+                <div class="captionTitle">{{item.title}}</div>
+                <div class="captionDate standardText">{{item.date}}</div>
+                <div class="standardText">{{item.caption}}</div>
+            </div>
+            <div class="timelineDot"></div>
+        </div>
         <div style="display: none;">
-            <div class="subheader">Timeline</div>
             <div class="subheader">Fun Facts</div>
             <ul>
                 <li>Jessica and Jason have a tradition of going to Nibbana every time they come back from a trip or their anniversary. Their order: Chicken Pad Thai to share (spicy level 2). This tradition originally started with their intern friend group the summer they met and carried through long distance.</li>
