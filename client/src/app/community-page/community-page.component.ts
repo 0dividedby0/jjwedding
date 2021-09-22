@@ -109,6 +109,7 @@ export class CommunityPageComponent implements OnInit {
       .subscribe(data => {
         console.log("Posted comment");
         this.getComments();
+        alert("Thank you for the song suggestion! See your recommendation on the comment board below!")
       });
       this.suggestedSong = "";
     }

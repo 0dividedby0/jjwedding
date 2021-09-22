@@ -28,7 +28,7 @@ export class StoryPageComponent implements OnInit {
         title: "The Beginning!",
         date: "July 3, 2018",
         caption: "Jessica picks up Jason to shop for fireworks but they end up talking the night away while watching an\
-         impromptu firwork show at Muckleshoot Casino. Both mark this day as the beginning of their relationship.",
+         impromptu firework show at Muckleshoot Casino. Both mark this day as the beginning of their relationship.",
         image: "fireworks.jpeg"
       },{
         title: "First Date!",
@@ -105,14 +105,14 @@ export class StoryPageComponent implements OnInit {
         image: "halloweenSurprise.jpeg"
       },{
         title: "Hawaii!",
-        date: "March 14, 2019",
+        date: "March 14, 2020",
         caption: "Jason and Jessica spontaneously decided it had been too long since they had seen each other in person and booked\
          a flight to Hawaii just 6 hours before it departed. The whole trip ended up working out great with some spectacular beaches,\
-         kayaking, waterfals, hiking, rain, and some amazing company!",
+         kayaking, waterfalls, hiking, rain, and some amazing company!",
         image: "hawaii.jpeg"
       },{
         title: "Seattle Summer!",
-        date: "May 23, 2019",
+        date: "May 23, 2020",
         caption: "After completing her Bachelors, Jessica moved up to Seattle for an internship with Boeing! This meant that Jason and\
         Jessica got to experience a taste of what the end of long distance would feel like. It was a bit of an adjustment but\
         also just so much fun, a window into what life would look like together!",

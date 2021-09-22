@@ -24,7 +24,7 @@
     flex-direction: row-reverse;
 }
 .timelineItem:nth-child(2n+1) .timelinePhoto img {
-    object-position: left !important;
+    object-position: left;
 }
 .timelineItem::before {
     content: "";
@@ -86,4 +86,34 @@
     border-bottom-right-radius: 100rem;
     border-bottom-left-radius: 100rem;
     transform: translate(-50%, -50%);
+}
+@media (max-width: 700px) {
+    .timelineDot {
+        left: 99%;
+    }
+    .timelineItem {
+        display: block;
+    }
+    .timelineItem::before {
+        left: 99%
+    }
+    .timelineItem::after {
+        left: 99%;
+        bottom: -44px;
+        height: calc(50% + 47px);
+    }
+    .timelinePhoto {
+        margin: 0px;
+        margin-top: 40px;
+        width: 80%;
+        height: auto;
+        margin-left: 5%;
+    }
+    .timelinePhoto img {
+        object-position: center bottom !important;
+    }
+    .timelineCaption {
+        margin: 0px;
+        width: 90%;
+    }
 }

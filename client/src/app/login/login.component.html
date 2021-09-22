@@ -5,10 +5,10 @@
 <div class="popup" *ngIf="accountWindowShowing">
     <div *ngIf="!currentParty.authenticated">
         <div class="cursiveText" style="text-align: center; font-size: 40px; margin-top: -10px;">Welcome!</div>
-        <input class="standardInput" type="text" placeholder="Access Code" [(ngModel)]="access_code">
+        <input class="standardInput" style="max-width: 40%;" type="text" placeholder="Access Code" [(ngModel)]="access_code">
         <button class="standardButton" (click)="authenticateParty()">Login</button>
         <button class="standardButton" (click)="accountWindowShowing = false">Close</button>
-        <div class="standardText" style="width: 400px; word-wrap: normal; font-size: 15px; margin-top: 5px;">If you have lost your access_code, please email us at jjwedding0703@gmail.com</div>
+        <div class="standardText" style="width: 400px; max-width: 100%; word-wrap: normal; font-size: 15px; margin-top: 5px;">If you have lost your access_code, please email us at jjwedding0703@gmail.com</div>
     </div>
     <div *ngIf="currentParty.authenticated">
         <div class="cursiveText" style="font-weight: bold; font-size: 40px; margin-left: 8px;">Welcome {{currentParty.party}}!</div>
