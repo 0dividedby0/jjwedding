@@ -17,11 +17,11 @@
                     <div class="rsvpItem" style="width: 200px; text-align: center;"><input type="radio" name="{{guest.guest_id}}RSVP" [(ngModel)]="guest.rsvp" [value]="0"></div>
                 </div>
                 <div class="standardText" style="font-style: italic; margin-bottom: 20px;">**Please include first and last name for all guests and check spelling carefully!</div>
-                <input class="standardInput" style="width: calc(100% - 200px); margin-bottom: 10px; width: 400px; text-align: center;" [(ngModel)]="suggestedSong" placeholder="Suggest a song to dance to!">
+                <input class="standardInput" style="width: calc(100% - 200px); margin-bottom: 10px; width: 400px; max-width: 95%; text-align: center;" [(ngModel)]="suggestedSong" placeholder="Suggest a song to dance to!">
                 <br>
-                <input class="standardInput" style="width: calc(100% - 200px); margin-bottom: 10px; width: 400px; text-align: center;" [(ngModel)]="userComment" placeholder="Leave us a message! (visible to all guests)">
+                <input class="standardInput" style="width: calc(100% - 200px); margin-bottom: 10px; width: 400px; max-width: 95%; text-align: center;" [(ngModel)]="userComment" placeholder="Leave us a message! (visible to all guests)">
                 <br>
-                <input class="standardInput" style="width: calc(100% - 200px); margin-bottom: 20px; width: 400px; text-align: center;" [(ngModel)]="userZipCode" placeholder="Add a pin on our map! (zip code)">
+                <input class="standardInput" style="width: calc(100% - 200px); margin-bottom: 20px; width: 400px; max-width: 95%; text-align: center;" [(ngModel)]="userZipCode" placeholder="Add a pin on our map! (zip code)">
             </div>
             <div *ngIf="currentParty.responded" style="margin-bottom: 10px;">
                 <div class="standardText">Thank you for your response!</div>

@@ -35,7 +35,7 @@
                     <input class="standardInput" style="width: calc(100% - 200px); margin-bottom: 20px;" [(ngModel)]="userComment" placeholder="Leave us a message!">
                     <button class="standardButton" style="margin-bottom: 20px;" (click)="submitComment()">Submit</button>
                     <div *ngFor="let comment of comments.slice().reverse()" style="text-align: left; margin-bottom: 10px;">
-                        <div *ngIf="comment!.system_message" style="padding-left: 15px;">
+                        <div *ngIf="comment!.system_message" style="padding: 15px;">
                             <div class="standardText" style="font-size: 15px; color: grey; display: inline-block; width: calc(100% - 35px);">{{comment!.message}}</div>
                             <button class="standardButton deleteButton" *ngIf="currentParty.admin || currentParty.party == comment!.author" (click)="deleteComment(comment!.id)">X</button>
                         </div>
