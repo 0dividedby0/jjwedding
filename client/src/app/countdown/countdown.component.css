@@ -3,6 +3,7 @@
   font-family: Chancery, cursive;
   font-size: 1.4em;
   letter-spacing: -1px;
+  display: inline-block;
 }
 .timer span {
   font-size: 2em;
