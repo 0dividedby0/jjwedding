@@ -1,0 +1,27 @@
+<div class="bg" style="background-repeat: repeat; background-size: auto; background-image: url(images/textureBackground.png);"></div>
+<div class="pageContent">
+    <app-nav-bar title="Bridal Shower"></app-nav-bar>
+    <div class="primaryContent" style="text-align: center;">
+        <div *ngIf="!currentParty.authenticated" class="standardText" style="font-size: 30px; text-align: center;">Please log in to view bridal shower details!</div>
+        <div [hidden]="!currentParty.authenticated">
+            <div class="cursiveText header" style="margin-top: 20px;">Travelling from Miss to Mrs.</div>
+            <div class="standardText" style="font-size: 25px; margin-bottom: 10px; margin-top: 10px;">April 9th, 2022 ✿ 10am-2pm</div>
+            <div class="standardText" style="font-size: 25px;">1873 E Tyson Pl Chandler, AZ 85225</div>
+
+            <div class="standardText" style="font-size: 25px; margin-top: 20px;">Please wear brunch attire!</div>
+            <img src="images/bridalshower/brunch1.JPG" class="brunchImage">
+            <img src="images/bridalshower/brunch2.JPG" class="brunchImage">
+            <img src="images/bridalshower/brunch3.JPG" class="brunchImage">
+            <img src="images/bridalshower/brunch4.JPG" class="brunchImage">
+            <img src="images/bridalshower/brunch5.JPG" class="brunchImage">
+
+            <div class="standardText" style="font-size: 25px; margin-top: 20px;">Optional Hen Party to follow on Whiskey Row, Scottsdale</div>
+            <div class="standardText" style="font-size: 25px;">Wear your tackiest thrifted wedding dress!</div>
+
+            <div class="standardText" style="font-size: 25px; margin-top: 20px;">The bride is registered below but if you would like to get her something special for the honeymoon please contact Erica Spence.</div>
+
+        </div>
+    </div>
+    <app-login></app-login>
+    <app-footer></app-footer>
+</div>

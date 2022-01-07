@@ -18,6 +18,7 @@ import { CurrentParty } from './currentParty';
 import { CountdownComponent } from './countdown/countdown.component';
 import { CommunityPageComponent } from './community-page/community-page.component';
 import { FooterComponent } from './footer/footer.component';
+import { BridalPageComponent } from './bridal-page/bridal-page.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { FooterComponent } from './footer/footer.component';
     LoginComponent,
     CountdownComponent,
     CommunityPageComponent,
-    FooterComponent
+    FooterComponent,
+    BridalPageComponent
   ],
   imports: [
     BrowserModule,

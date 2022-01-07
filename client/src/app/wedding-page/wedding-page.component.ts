@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CurrentParty } from '../currentParty';
 
 @Component({
   selector: 'app-wedding-page',
@@ -7,7 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class WeddingPageComponent implements OnInit {
 
-  constructor() { }
+  currentParty: CurrentParty;
+
+  constructor(currentParty: CurrentParty) { 
+    this.currentParty = currentParty;
+  }
 
   ngOnInit(): void {
   }

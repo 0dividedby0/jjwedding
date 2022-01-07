@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { trigger, state, style, animate, transition } from '@angular/animations';
+import { CurrentParty } from '../currentParty';
 
 @Component({
   selector: 'app-home-page',
@@ -20,7 +21,11 @@ import { trigger, state, style, animate, transition } from '@angular/animations'
 })
 export class HomePageComponent implements OnInit {
 
-  constructor() { }
+  currentParty: CurrentParty;
+
+  constructor(currentParty: CurrentParty) { 
+    this.currentParty = currentParty;
+  }
 
   title = "Jason & Jessica";
   countdown = "340 days 21 hours 12 minutes"

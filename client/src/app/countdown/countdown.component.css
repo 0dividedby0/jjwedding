@@ -13,3 +13,9 @@
   text-align: right;
   white-space: nowrap;
 }
+@media (max-width: 1000px) {
+  .timer span {
+      font-size: 40px;
+      width: 40%;
+  }
+}

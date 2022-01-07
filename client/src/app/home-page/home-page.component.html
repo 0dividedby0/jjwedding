@@ -18,6 +18,7 @@
         <a class="menuButton" href="travel">Travel</a>
         <a class="menuButton" href="registry">Registry</a>
         <a class="menuButton" href="community">Community</a>
+        <a class="menuButton" *ngIf="currentParty.admin || currentParty.bridal_shower" href="bridalshower">Bridal Shower</a>
     </div>
     <app-login></app-login>
 </div>

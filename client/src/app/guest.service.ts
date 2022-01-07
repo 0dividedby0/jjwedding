@@ -9,6 +9,7 @@ interface Party {
     party: string;
     responded: boolean;
     admin: boolean;
+    bridal_shower: boolean;
 }
 interface Guest {
     access_code: string;
@@ -34,7 +35,7 @@ interface Pin {
     providedIn: 'root'
 })
 export class GuestService {
-    static prod = false;
+    static prod = true;
     static rootURL: string = GuestService.prod ? "http://75.172.128.175:7318" : "http://192.168.0.34:7318";
 
     private authenticationChangedSource = new Subject<boolean>();
@@ -48,6 +49,7 @@ export class GuestService {
             this.currentParty.party = data.party;
             this.currentParty.responded = data.responded ? true : false;
             this.currentParty.admin = data.admin ? true : false;
+            this.currentParty.bridal_shower = data.bridal_shower ? true : false;
             localStorage.setItem("accessCode", data.access_code);
 
             this.getGuests(data.access_code);
@@ -64,6 +66,7 @@ export class GuestService {
         this.currentParty.party = "";
         this.currentParty.responded = false;
         this.currentParty.admin = false;
+        this.currentParty.bridal_shower = false;
         this.currentParty.guests = [];
         localStorage.removeItem("accessCode");
         this.authenticationChangedSource.next(this.currentParty.authenticated);

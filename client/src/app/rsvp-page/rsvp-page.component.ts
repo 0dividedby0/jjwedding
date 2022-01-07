@@ -10,6 +10,7 @@ interface Party {
     party: string;
     responded: boolean;
     admin: boolean;
+    bridal_shower: boolean;
 }
 interface Guest {
     access_code: string;

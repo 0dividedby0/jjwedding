@@ -14,6 +14,7 @@ export class CurrentParty {
     email: string = '';
     responded: boolean = false;
     admin: boolean = false;
+    bridal_shower: boolean = false;
     authenticated: boolean = false;
     guests: Array<Guest> = [];
 }
