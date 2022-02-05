@@ -1,8 +1,74 @@
 <div class="bg" style="background-repeat: repeat; background-size: auto; background-image: url(images/textureBackground.png);"></div>
 <div class="pageContent">
     <app-nav-bar title="Travel"></app-nav-bar>
-    <div class="primaryContent">
-        <div class="subheader">Coming Soon!</div>
+    <div class="primaryContent" style="text-align: center;">
+        <div *ngIf="!currentParty.authenticated" class="standardText" style="font-size: 30px; text-align: center; margin-bottom: 30px;">Please log in to view travel details!</div>
+        <div *ngIf="currentParty.authenticated">
+            <div class="subheader">Flights</div>
+            <div class="weddingBlock" style="margin-bottom: 20px;">
+                <img src="images/travel/pdx.jpeg" class="weddingBlockImage" style="height: auto;">
+                <div class="standardText" style="font-weight: bold;">Portland International Airport (PDX)</div>
+                <div class="standardText" style="font-style: italic;">20 mins to Vancouver Hotels</div>
+                <div class="standardText" style="font-style: italic;">40 mins to Empress Estates</div>
+            </div>
+            <div class="weddingBlock" style="margin-bottom: 20px;">
+                <img src="images/travel/sea.jpeg" class="weddingBlockImage" style="height: auto;">
+                <div class="standardText" style="font-weight: bold;">Seattle-Tacoma International Airport (SEA)</div>
+                <div class="standardText" style="font-style: italic;">140 mins to Vancouver Hotels</div>
+                <div class="standardText" style="font-style: italic;">125 mins to Empress Estates</div>
+            </div>
+            <div class="subheader">Hotels</div>
+            <div class="standardText" style="margin-bottom: 20px;">The following hotels have been blocked for our wedding! Please book by June 15, 2022 to be in the block and get the discounted rates!</div>
+            <div class="weddingBlock" style="margin-bottom: 20px;">
+                <img src="images/travel/hieNorth.jpeg" class="weddingBlockImage" style="height: auto;">
+                <div class="standardText" style="font-weight: bold;">Holiday Inn Express - Vancouver North</div>
+                <div class="standardText" style="font-style: italic;">13101 NE 27th Avenue - Vancouver, WA 98686</div>
+                <div class="standardText" style="font-style: italic;">(360) 576-1040</div>
+                <div class="standardText" style="font-style: italic;">$139/night</div>
+                <hr>
+                <div class="standardText">25 mins to Empress Estates, 45 mins to Anderson Lodge</div>
+                <a target="_blank" href="travel">Book Now (Coming Soon)!</a>
+            </div>
+            <div class="weddingBlock" style="margin-bottom: 20px;">
+                <img src="images/travel/hie.jpeg" class="weddingBlockImage" style="height: auto;">
+                <div class="standardText" style="font-weight: bold;">Holiday Inn Express - Vancouver</div>
+                <div class="standardText" style="font-style: italic;">7205 NE 41st Street - Vancouver, WA 98662</div>
+                <div class="standardText" style="font-style: italic;">(360) 253-0500</div>
+                <div class="standardText" style="font-style: italic;">$139/night</div>
+                <hr>
+                <div class="standardText">30 mins to Empress Estates, 55 mins to Anderson Lodge</div>
+                <a target="_blank" href="https://www.hiexpress.com/redirect?path=rates&brandCode=EX&localeCode=en&regionCode=1&hotelCode=pdxvn&checkInDate=01&checkInMonthYear=062022&checkOutDate=04&checkOutMonthYear=062022&_PMID=99801505&GPC=PHW&cn=no&viewfullsite=true">Book Now!</a>
+            </div>
+            <div class="subheader">Camping</div>
+            <div class="standardText" style="margin-bottom: 20px;">For those who enjoy camping and the outdoors, our Anderson Lodge venue offers 6 RV spots and plenty of room for tents. It's right in the middle of the beautiful Washington forest with 75 acres of hiking trails and lots of wildlife. Additionally, you will be right next to all of our planned activities and will be provided food and drinks for the whole weekend! Bathrooms, showers, and spaces to get ready are available.</div>
+            <div class="weddingBlock" style="margin-bottom: 20px;">
+                <img src="images/travel/andersonCamping.jpeg" class="weddingBlockImage" style="height: auto;">
+                <div class="standardText" style="font-weight: bold;">Anderson Lodge - RV/Camping</div>
+                <div class="standardText" style="font-style: italic;">12014 Lewis River Road - Ariel, WA 98603</div>
+                <div class="standardText" style="font-style: italic;">$50/night</div>
+                <hr>
+                <div class="standardText">Contact us at jjwedding0703@gmail.com to book!</div>
+                <a target="_blank" href="https://www.andersonlodge.com">Website</a>
+            </div>
+            <div class="subheader">Venues</div>
+            <div class="standardText" style="margin-bottom: 20px;">Our wedding events will be hosted July 1-4 at the following two venues!</div>
+            <div class="weddingBlock" style="margin-bottom: 20px;">
+                <img src="images/travel/empress.jpeg" class="weddingBlockImage" style="height: auto;">
+                <div class="standardText" style="font-weight: bold;">Empress Estate - Woodland Chateau</div>
+                <div class="standardText" style="font-style: italic;">460 Empress Lane - Woodland, WA 98674</div>
+                <hr>
+                <div class="standardText">July 2: Ceremony, Dinner, Reception, Dancing</div>
+                <a target="_blank" href="https://www.theempressestate.com">Website</a>
+            </div>
+            <div class="weddingBlock" style="margin-bottom: 20px;">
+                <img src="images/travel/anderson.jpeg" class="weddingBlockImage" style="height: auto;">
+                <div class="standardText" style="font-weight: bold;">Anderson Lodge - Hilltop House</div>
+                <div class="standardText" style="font-style: italic;">12014 Lewis River Road - Ariel, WA 98603</div>
+                <hr>
+                <div class="standardText">July 1-4: Welcome Dinner, Afterparty, Friends and Family Reunion/Gameday</div>
+                <a target="_blank" href="https://www.andersonlodge.com">Website</a>
+            </div>
+        </div>
     </div>
     <app-login></app-login>
     <app-footer></app-footer>

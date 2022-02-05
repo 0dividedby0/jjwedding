@@ -3,7 +3,7 @@
     <app-nav-bar title="Bridal Shower"></app-nav-bar>
     <div class="primaryContent" style="text-align: center;">
         <div *ngIf="!currentParty.authenticated" class="standardText" style="font-size: 30px; text-align: center;">Please log in to view bridal shower details!</div>
-        <div [hidden]="!currentParty.authenticated">
+        <div *ngIf="currentParty.authenticated">
             <div class="cursiveText header" style="margin-top: 20px;">Travelling from Miss to Mrs.</div>
             <div class="standardText" style="font-size: 25px; margin-bottom: 10px; margin-top: 10px;">April 9th, 2022 ✿ 10am-2pm</div>
             <div class="standardText" style="font-size: 25px;">1873 E Tyson Pl Chandler, AZ 85225</div>

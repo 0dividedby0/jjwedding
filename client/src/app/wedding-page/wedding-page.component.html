@@ -6,20 +6,55 @@
         <div class="subheader">When?</div>
         <div class="cursiveText header" style="padding-left: 25px;">July 2-3, 2022</div>
         <app-countdown></app-countdown>
-        <div [hidden]="!currentParty.authenticated">
+        <div *ngIf="currentParty.authenticated">
             <div class="standardText" style="margin-bottom: 20px; margin-top: 10px;">Our ceremony and reception will be on the 2nd and the celebration will continue with family, friends, games, and food on the 3rd! Please <a href="rsvp">RSVP</a> as soon as possible so we can get everything ready, we look forward to seeing all of you!</div>
             <div style="height: 50px;"></div>
+            <div class="subheader" style="margin-bottom: 0px;">What?</div>
+            <div class="weddingBlock" style="margin-bottom: 20px; text-align: left; float: left; min-width: 400px;">
+                <h2>Friday, July 1</h2>
+                <div class="standardText" style="font-weight: bold;">6:00 PM - Rehearsal/Welcome Dinner</div>
+                <li>This dinner is at Anderson Lodge for people arriving Friday who would like to meet everyone!</li>
+            </div>
+            <div class="weddingBlock" style="margin-bottom: 20px; text-align: left; float: right; min-width: 400px;">
+                <h2>Saturday, July 2</h2>
+                <div class="standardText" style="font-weight: bold;">3:00 PM - Set up at Empress Estates</div>
+                <li>This is only for people who have been asked to help with setup</li>
+                <div class="standardText" style="font-weight: bold;">4:30 PM - Seating opens for ceremony</div>
+                <li>Please arrive at this time for the ceremony!</li>
+                <div class="standardText" style="font-weight: bold;">5:00 PM - Wedding Ceremony!</div>
+                <div class="standardText" style="font-weight: bold;">5:30 PM - Cocktail Hour</div>
+                <li>Time to get to know the new extended family!</li>
+                <div class="standardText" style="font-weight: bold;">6:30 PM - Dinner at Empress</div>
+                <div class="standardText" style="font-weight: bold;">7:30 PM-10:00 PM - Party/Music/Dancing</div>
+                <li>Let's celebrate, everyone should be on the dance floor!</li>
+                <div class="standardText" style="font-weight: bold;">11:00 PM - Afterparty</div>
+                <li>After party at Anderson Lodge for anyone who wants to keep the party going!</li>
+            </div>
+            <div class="weddingBlock" style="margin-bottom: 20px; text-align: left; float: left; min-width: 400px;">
+                <h2>Sunday, July 3</h2>
+                <div class="standardText" style="font-weight: bold;">All Day - Family and Friends Reunion!</div>
+                <li>Get ready for fun at Anderson Lodge, friendly competitions between the girls and the boys!</li>
+                <li>We can't wait to catch-up with all of our out of town guests!</li>
+                <div class="standardText" style="font-weight: bold;">9:00 AM - Breakfast at Anderson</div>
+                <div class="standardText" style="font-weight: bold;">12:00 PM - Lunch at Anderson</div>
+                <div class="standardText" style="font-weight: bold;">6:00 PM - Dinner at Anderson</div>
+                <div class="standardText" style="font-weight: bold;">7:00 PM - Signing the marriage license and shoe game</div>
+                <div class="standardText" style="font-weight: bold;">8:30 PM - Bonfire</div>
+                <div class="standardText" style="font-weight: bold;">10:00 PM - Grand Finale (you don't want to miss it)</div>
+
+            </div>
+            <br style="clear: both;">
             <div class="subheader">Where?</div>
             <div class="cursiveText header">Woodland, WA</div>
             <div class="standardText" style="margin-bottom: 20px;">Woodland, WA is a hidden gem about 2.5 hours south of Seattle and 30 minutes north of Portland defined by stunning landscapes only seen in the PNW. See our <a href="travel">travel page</a> for more information!</div>
             <div class="weddingBlock" style="margin-bottom: 20px;">
                 <img src="images/wedding/empress.jpeg" class="weddingBlockImage" style="height: auto;">
-                <div class="standardText" style="font-weight: bold;">Empress Estate - Woodland Chateau</div>
+                <div class="standardText" style="font-weight: bold;"><a target="_blank" href="https://www.theempressestate.com">Empress Estate</a> - Woodland Chateau</div>
                 <div class="standardText">Gorgeous forest gardens with views of the valley, surrounding rivers, and sunset over the mountains! This venue will host our ceremony and reception.</div>
             </div>
             <div class="weddingBlock" style="margin-bottom: 20px;">
                 <img src="images/wedding/anderson.jpeg" class="weddingBlockImage" style="height: auto;">
-                <div class="standardText" style="font-weight: bold;">Anderson Lodge - Hilltop House</div>
+                <div class="standardText" style="font-weight: bold;"><a target="_blank" href="https://www.andersonlodge.com">Anderson Lodge</a> - Hilltop House</div>
                 <div class="standardText">75 acres of fun in the middle of the beautiful Washington mountains, with stunning views of the valley! This venue will host our family and friend reunion on the 3rd.</div>
             </div>
             <div class="subheader">Who?</div>
