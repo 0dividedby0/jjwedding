@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { GuestService } from '../guest.service';
 import { CurrentParty } from '../currentParty';
+import { HostListener } from '@angular/core';
 
 @Component({
     selector: 'app-login',
@@ -45,7 +46,10 @@ export class LoginComponent implements OnInit {
         this.guestService.authenticateParty(this.access_code);
     }
 
+    @HostListener('document:keydown.escape', ['$event']) handleKeyboardEvent(event: KeyboardEvent) { 
+        this.accountWindowShowing = false;
+    }
+
     ngOnInit(): void {
-        
     }
 }

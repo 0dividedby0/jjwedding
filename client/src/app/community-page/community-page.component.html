@@ -15,7 +15,7 @@
                     <div class="subheader" style="margin-bottom: 10px;">Map</div>
                     <div class="standardText" style="margin-bottom: 10px;">Tell us where you are from and see where our guests are from!</div>
                     <div style="margin-bottom: 10px;">
-                        <input class="standardInput" style="width: calc(100% - 200px);" [(ngModel)]="userZipCode" placeholder="Zip Code">
+                        <input class="standardInput" style="width: calc(100% - 200px);" [(ngModel)]="userZipCode" placeholder="Zip Code" (keyup.enter)="addPin()">
                         <button class="standardButton" (click)="addPin()">Add Pin</button>
                     </div>
                     <div id="map"></div>
@@ -24,7 +24,7 @@
                     <div class="subheader" style="margin-bottom: 10px;">Music</div>
                     <div class="standardText" style="margin-bottom: 10px;">Recommend a wedding song that you like and see some of our favorites!</div>
                     <div style="margin-bottom: 10px;">
-                        <input class="standardInput" style="width: calc(100% - 200px);" [(ngModel)]="suggestedSong" placeholder="Suggest Song!">
+                        <input class="standardInput" style="width: calc(100% - 200px);" [(ngModel)]="suggestedSong" (keyup.enter)="suggestSong()" placeholder="Suggest Song!">
                         <button class="standardButton" (click)="suggestSong()">Suggest</button>
                     </div>
                     <iframe allow="autoplay *; encrypted-media *; fullscreen *" frameborder="0" height="450" style="width:100%; max-width:660px; overflow:hidden; background:transparent;" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation" src="https://embed.music.apple.com/us/playlist/wedding/pl.u-zPyLl4vTxYdRk7"></iframe>
@@ -32,7 +32,7 @@
                 <div class="communityItem">
                     <div class="subheader" style="margin-bottom: 10px;">Comment Board</div>
                     <div class="standardText" style="margin-bottom: 10px;">Leave a note for us and the rest of our guests, we'd love to hear from you! Please use email for questions!</div>
-                    <input class="standardInput" style="width: calc(100% - 200px); margin-bottom: 20px;" [(ngModel)]="userComment" placeholder="Leave us a message!">
+                    <input class="standardInput" style="width: calc(100% - 200px); margin-bottom: 20px;" [(ngModel)]="userComment" (keyup.enter)="submitComment()" placeholder="Leave us a message!">
                     <button class="standardButton" style="margin-bottom: 20px;" (click)="submitComment()">Submit</button>
                     <div *ngFor="let comment of comments.slice().reverse()" style="text-align: left; margin-bottom: 10px;">
                         <div *ngIf="comment!.system_message" style="padding: 15px;">

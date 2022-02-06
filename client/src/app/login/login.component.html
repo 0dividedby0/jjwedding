@@ -5,7 +5,7 @@
 <div class="popup" *ngIf="accountWindowShowing">
     <div *ngIf="!currentParty.authenticated">
         <div class="cursiveText" style="text-align: center; font-size: 40px; margin-top: -10px;">Welcome!</div>
-        <input class="standardInput" style="max-width: 40%;" type="text" placeholder="Access Code" [(ngModel)]="access_code">
+        <input class="standardInput" style="max-width: 40%;" type="text" placeholder="Access Code" [(ngModel)]="access_code" (keyup.enter)="authenticateParty()">
         <button class="standardButton" (click)="authenticateParty()">Login</button>
         <button class="standardButton" (click)="accountWindowShowing = false">Close</button>
         <div class="standardText" style="width: 400px; max-width: 100%; word-wrap: normal; font-size: 15px; margin-top: 5px;">If you have lost your access code, please email us at jjwedding0703@gmail.com</div>
@@ -16,7 +16,7 @@
         <button class="standardButton" *ngIf="currentParty.email" style="display: inline-block; margin-bottom: 10px; margin-top: 10px;" (click)="currentParty.email = ''">Change</button>
         <br>
         <div *ngIf="!currentParty.email">
-            <input class="standardInput" style="margin-top: 10px;" type="text" placeholder="Email" [(ngModel)]="email">
+            <input class="standardInput" style="margin-top: 10px;" type="text" placeholder="Email" [(ngModel)]="email" (keyup.enter)="updateEmail()">
             <button class="standardButton" (click)="updateEmail()">Submit</button>
             <div class="standardText" style="margin-bottom: 10px; font-size: 15px;">Please provide an email so that we can contact you with important updates!</div>
         </div>

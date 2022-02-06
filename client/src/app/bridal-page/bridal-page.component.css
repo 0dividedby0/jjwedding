@@ -19,15 +19,16 @@
 }
 .brunchImage {
     display: inline-block;
-    width: 30%;
     margin: 10px;
-    max-height: 200px;
+    max-height: 150px;
 }
 @media (max-width: 1000px) {
     .header {
         font-size: 50px;
     }
-    .brunchImage {
-        width: 75%;
+}
+@media (max-width: 1150px) {
+    .sideBlinder {
+        display: none;
     }
 }

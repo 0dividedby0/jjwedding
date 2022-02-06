@@ -69,15 +69,15 @@ export class CommunityPageComponent implements OnInit {
 
       geocoder.geocode( { 'address': this.userZipCode }, (results, status) => {
         if (status == google.maps.GeocoderStatus.OK) {
-          console.log(`${results[0].geometry.location.lat}, ${results[0].geometry.location.lng}`);
           this.guestService.postPin({
             access_code: this.currentParty.access_code, 
             zip: this.userZipCode,
             lat: results[0].geometry.location.lat(),
             lng: results[0].geometry.location.lng()
           }).subscribe(data => {
-            console.log("Posted pin");
             this.getPins();
+            this.map!.setCenter({ lat: results[0].geometry.location.lat(), lng: results[0].geometry.location.lng() });
+            this.map!.setZoom(8);
           });
         } else {
           alert("Geocode was not successful for the following reason: " + status);
@@ -107,7 +107,6 @@ export class CommunityPageComponent implements OnInit {
         id: -1
       })
       .subscribe(data => {
-        console.log("Posted comment");
         this.getComments();
         alert("Thank you for the song suggestion! See your recommendation on the comment board below!")
       });
@@ -129,7 +128,6 @@ export class CommunityPageComponent implements OnInit {
         id: -1
       })
       .subscribe(data => {
-        console.log("Posted comment");
         this.getComments();
       });
       this.userComment = "";
