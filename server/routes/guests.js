@@ -17,8 +17,8 @@ router.get('/:party_access_code', function(req, res) {
 router.post('/', function(req, res) {
     console.log("Updating guests!")
     req.body.forEach(guest => {
-        console.log(`\tUpdating guest ${guest.guest_id} - Name: ${guest.name}, RSVP: ${guest.rsvp}`);
-        database.query(`update guests set rsvp = ${guest.rsvp}, name = "${guest.name}" where guest_id = "${guest.guest_id}"`, function (error, results, fields) {
+        console.log(`\tUpdating guest ${guest.guest_id} - Name: ${guest.name}, RSVP: ${guest.rsvp}, Shower_RSVP: ${guest.shower_rsvp}`);
+        database.query(`update guests set rsvp = ${guest.rsvp}, name = "${guest.name}", shower_rsvp = "${guest.shower_rsvp}" where guest_id = "${guest.guest_id}"`, function (error, results, fields) {
             if (error) console.log(error);
             else console.log("\tDone.");
         });
