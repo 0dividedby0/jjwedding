@@ -5,6 +5,7 @@ interface Guest {
     name: string;
     rsvp: boolean;
     guest_id: number;
+    shower_rsvp: boolean;
 }
 
 @Injectable()
@@ -15,6 +16,7 @@ export class CurrentParty {
     responded: boolean = false;
     admin: boolean = false;
     bridal_shower: boolean = false;
+    shower_responded: boolean = false;
     authenticated: boolean = false;
     guests: Array<Guest> = [];
 }

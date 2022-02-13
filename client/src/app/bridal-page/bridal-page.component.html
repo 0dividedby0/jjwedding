@@ -8,7 +8,42 @@
             <div class="cursiveText header" style="margin-top: 20px;">Travelling from Miss to Mrs.</div>
             <div class="standardText" style="font-size: 25px; margin-bottom: 10px; margin-top: 10px;">April 9th, 2022 ✿ 11:00 AM</div>
             <div class="standardText" style="font-size: 25px;">1873 E Tyson Pl Chandler, AZ 85225</div>
-
+            <hr>
+            <div *ngIf="!currentParty.shower_responded">
+                <div style="margin-top: 30px;">
+                    <div class="rsvpItem standardText" style="width: 400px;">Name</div>
+                    <div class="rsvpItem standardText" style="width: 200px; text-align: center;">Delightfully Accept</div>
+                    <div class="rsvpItem standardText" style="width: 200px; text-align: center;">Regretfully Decline</div>
+                </div>
+                <div *ngFor="let guest of currentParty.guests;" style="margin-top: 10px; margin-bottom: 10px;">
+                    <div class="rsvpItem" style="width: 400px; vertical-align: top;"><input class="standardInput" style="width: 95%;" [(ngModel)]="guest.name"></div>
+                    <div class="rsvpItem" style="width: 200px; text-align: center;"><input type="radio" name="{{guest.guest_id}}RSVP" [(ngModel)]="guest.shower_rsvp" [value]="1"></div>
+                    <div class="rsvpItem" style="width: 200px; text-align: center;"><input type="radio" name="{{guest.guest_id}}RSVP" [(ngModel)]="guest.shower_rsvp" [value]="0"></div>
+                </div>
+                <div class="standardText" style="font-style: italic; margin-bottom: 20px;">**Please include first and last name for all guests and check spelling carefully!</div>
+            </div>
+            <div *ngIf="currentParty.shower_responded" style="margin-bottom: 10px;">
+                <div class="standardText">Thank you for your response!</div>
+                <div style="margin-top: 30px;">
+                    <div class="rsvpItem standardText" style="width: 300px;">Name</div>
+                    <div class="rsvpItem standardText" style="width: 300px; text-align: center;">RSVP</div>
+                </div>
+                <div *ngFor="let guest of currentParty.guests;" style="margin-top: 10px; margin-bottom: 10px;">
+                    <div class="rsvpItem" style="width: 300px; vertical-align: top;"><div class="standardText" style="font-weight: normal;">{{guest.name}}</div></div>
+                    <div class="rsvpItem" style="width: 300px; text-align: center;"><div class="standardText" style="font-weight: normal;">{{guest.shower_rsvp ? "Accepted" : "Declined"}}</div></div>
+                </div>
+            </div>
+            <button class="standardButton" (click)="submitRSVP()">{{currentParty.shower_responded ? "Change Response" : "Submit"}}</button>
+            <div *ngIf="currentParty.admin" style="text-align: left; column-count: 3; margin-top: 20px;">
+                <div *ngFor="let object of adminData | keyvalue" style="break-inside: avoid-column; margin-bottom: 15px;">
+                    <span *ngIf="object.value.party.bridal_shower">
+                        <div class="standardText" style="font-weight: bold;" [ngStyle]="{'color': object.value.party.shower_responded ? 'green' : 'red'}">{{object.value.party.access_code}} - {{object.value.party.party}}</div>
+                        <div class="standardText" *ngIf="object.value.party.email" style="margin-left: 30px;">Email: {{object.value.party.email}}</div>
+                        <div class="standardText" *ngFor="let guest of object.value.guests" style="margin-left: 30px;" [ngStyle]="{'color': guest!.shower_rsvp ? 'green' : 'red'}">{{guest!.name}}</div>
+                    </span>
+                </div>
+            </div>
+            <hr>
             <div class="standardText" style="font-size: 25px; margin-top: 20px;">Please wear brunch attire!</div>
             <img src="images/bridalshower/brunch1.JPG" class="brunchImage">
             <img src="images/bridalshower/brunch2.JPG" class="brunchImage">

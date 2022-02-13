@@ -11,12 +11,14 @@ interface Party {
     responded: boolean;
     admin: boolean;
     bridal_shower: boolean;
+    shower_responded: boolean;
 }
 interface Guest {
     access_code: string;
     name: string;
     rsvp: boolean;
     guest_id: number;
+    shower_rsvp: boolean;
 }
 
 @Component({

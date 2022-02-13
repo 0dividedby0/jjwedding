@@ -10,12 +10,14 @@ interface Party {
     responded: boolean;
     admin: boolean;
     bridal_shower: boolean;
+    shower_responded: boolean;
 }
 interface Guest {
     access_code: string;
     name: string;
     rsvp: boolean;
     guest_id: number;
+    shower_rsvp: boolean;
 }
 interface Comment {
     author: string;
@@ -50,6 +52,7 @@ export class GuestService {
             this.currentParty.responded = data.responded ? true : false;
             this.currentParty.admin = data.admin ? true : false;
             this.currentParty.bridal_shower = data.bridal_shower ? true : false;
+            this.currentParty.shower_responded = data.shower_responded ? true : false;
             localStorage.setItem("accessCode", data.access_code);
 
             this.getGuests(data.access_code);
@@ -67,6 +70,7 @@ export class GuestService {
         this.currentParty.responded = false;
         this.currentParty.admin = false;
         this.currentParty.bridal_shower = false;
+        this.currentParty.shower_responded = false;
         this.currentParty.guests = [];
         localStorage.removeItem("accessCode");
         this.authenticationChangedSource.next(this.currentParty.authenticated);
