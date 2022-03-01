@@ -6,6 +6,9 @@ interface Guest {
     rsvp: boolean;
     guest_id: number;
     shower_rsvp: boolean;
+    dinner_rsvp: boolean;
+    reunion_rsvp: boolean;
+    games_rsvp: boolean;
 }
 
 @Injectable()
