@@ -109,7 +109,16 @@ export class RsvpPageComponent implements OnInit {
                         if (guest.dinner_rsvp === undefined) anyUndefined = true;
                     });
                     anyUndefined ? alert("Please provide a response for all guests!") : this.currentPage = 3;
-                } else this.currentPage = 1;
+                } else {
+                    this.currentPage = 1;
+                    this.currentParty.guests.forEach(guest => {
+                        if (!guest.rsvp) {
+                            guest.dinner_rsvp = undefined;
+                            guest.reunion_rsvp = undefined;
+                            guest.games_rsvp = undefined;
+                        }
+                    });
+                }
                 break;
             case 3: //Afterparty RSVP
                 if (forward) {
@@ -137,11 +146,25 @@ export class RsvpPageComponent implements OnInit {
                 if (!forward) {
                     var allDeclined: boolean = true;
                     this.currentParty.guests.forEach(guest => { if (guest.rsvp) allDeclined = false; });
-                    if (allDeclined) this.currentPage = 1
+                    if (allDeclined) {
+                        this.currentPage = 1;
+                        this.currentParty.guests.forEach(guest => {
+                            if (!guest.rsvp) {
+                                guest.dinner_rsvp = undefined;
+                                guest.reunion_rsvp = undefined;
+                                guest.games_rsvp = undefined;
+                            }
+                        });
+                    }
                     else {
                         var allDeclined: boolean = true;
                         this.currentParty.guests.forEach(guest => { if (guest.reunion_rsvp) allDeclined = false; });
-                        allDeclined ? this.currentPage = 3 : this.currentPage = 4;
+                        if (allDeclined) {
+                            this.currentPage = 3;
+                            this.currentParty.guests.forEach(guest => {
+                                if (!guest.reunion_rsvp) guest.games_rsvp = undefined;
+                            });
+                        } else this.currentPage = 4;
                     }
                 }
                 break;
