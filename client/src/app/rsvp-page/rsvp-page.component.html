@@ -3,6 +3,7 @@
     <app-nav-bar title="RSVP"></app-nav-bar>
     <div class="primaryContent" style="text-align: center;">
         <div *ngIf="currentParty.authenticated">
+            <div class="standardText" style="margin-top: 10px; font-size: 25px;">Please respond by May 31, 2022!</div>
             <div class="partyName cursiveText">{{currentParty.party}}</div>
             <div class="cursiveText" style="margin-top: 10px; font-size: 28px;">You are invited to the wedding of Jessica Peebles and Jason Halcomb! We look forward to seeing you!</div>
             <hr style="width: 75%; margin-top: 30px;">
@@ -16,8 +17,8 @@
                     </div>
                     <div *ngFor="let guest of currentParty.guests;" style="margin-top: 10px; margin-bottom: 10px;">
                         <div class="rsvpItem" style="width: 400px; vertical-align: top;"><input class="standardInput" style="width: 95%;" [(ngModel)]="guest.name"></div>
-                        <div class="rsvpItem" style="width: 200px; text-align: center;"><input type="radio" name="{{guest.guest_id}}RSVP" [(ngModel)]="guest.rsvp" [value]="true"></div>
-                        <div class="rsvpItem" style="width: 200px; text-align: center;"><input type="radio" name="{{guest.guest_id}}RSVP" [(ngModel)]="guest.rsvp" [value]="false"></div>
+                        <div class="rsvpItem radioDiv" style="width: 200px; text-align: center;"><input type="radio" name="{{guest.guest_id}}RSVP" [(ngModel)]="guest.rsvp" [value]="true"><span class="mark"></span></div>
+                        <div class="rsvpItem radioDiv" style="width: 200px; text-align: center;"><input type="radio" name="{{guest.guest_id}}RSVP" [(ngModel)]="guest.rsvp" [value]="false"><span class="mark"></span></div>
                     </div>
                     <div class="standardText" style="font-style: italic; margin-bottom: 20px;">Please include first and last name for all guests and check spelling carefully!</div>
                     <div style="height: 30px; display: inline-block; vertical-align: middle;">
@@ -39,8 +40,8 @@
                     <div *ngFor="let guest of currentParty.guests;" style="margin-top: 10px; margin-bottom: 10px;">
                         <div *ngIf="guest.rsvp">
                             <div class="rsvpItem" style="width: 300px; vertical-align: top;"><div class="standardText" style="font-weight: normal;">{{guest.name}}</div></div>
-                            <div class="rsvpItem" style="width: 200px; text-align: center;"><input type="radio" name="{{guest.guest_id}}RSVP" [(ngModel)]="guest.dinner_rsvp" [value]="true"></div>
-                            <div class="rsvpItem" style="width: 200px; text-align: center;"><input type="radio" name="{{guest.guest_id}}RSVP" [(ngModel)]="guest.dinner_rsvp" [value]="false"></div>
+                            <div class="rsvpItem radioDiv" style="width: 200px; text-align: center;"><input type="radio" name="{{guest.guest_id}}RSVP" [(ngModel)]="guest.dinner_rsvp" [value]="true"><span class="mark"></span></div>
+                            <div class="rsvpItem radioDiv" style="width: 200px; text-align: center;"><input type="radio" name="{{guest.guest_id}}RSVP" [(ngModel)]="guest.dinner_rsvp" [value]="false"><span class="mark"></span></div>
                         </div>    
                     </div>
                     <button class="standardButton" style="display: inline-block; margin-right: 20px;" (click)="navRSVP(false)">Back</button>
@@ -63,8 +64,8 @@
                     <div *ngFor="let guest of currentParty.guests;" style="margin-top: 10px; margin-bottom: 10px;">
                         <div *ngIf="guest.rsvp">
                             <div class="rsvpItem" style="width: 300px; vertical-align: top;"><div class="standardText" style="font-weight: normal;">{{guest.name}}</div></div>
-                            <div class="rsvpItem" style="width: 200px; text-align: center;"><input type="radio" name="{{guest.guest_id}}RSVP" [(ngModel)]="guest.reunion_rsvp" [value]="true"></div>
-                            <div class="rsvpItem" style="width: 200px; text-align: center;"><input type="radio" name="{{guest.guest_id}}RSVP" [(ngModel)]="guest.reunion_rsvp" [value]="false"></div>
+                            <div class="rsvpItem radioDiv" style="width: 200px; text-align: center;"><input type="radio" name="{{guest.guest_id}}RSVP" [(ngModel)]="guest.reunion_rsvp" [value]="true"><span class="mark"></span></div>
+                            <div class="rsvpItem radioDiv" style="width: 200px; text-align: center;"><input type="radio" name="{{guest.guest_id}}RSVP" [(ngModel)]="guest.reunion_rsvp" [value]="false"><span class="mark"></span></div>
                         </div>
                     </div>
                     <button class="standardButton" style="display: inline-block; margin-right: 20px;" (click)="navRSVP(false)">Back</button>
@@ -87,8 +88,8 @@
                     <div *ngFor="let guest of currentParty.guests;" style="margin-top: 10px; margin-bottom: 10px;">
                         <div *ngIf="guest.reunion_rsvp">
                             <div class="rsvpItem" style="width: 300px; vertical-align: top;"><div class="standardText" style="font-weight: normal;">{{guest.name}}</div></div>
-                            <div class="rsvpItem" style="width: 200px; text-align: center;"><input type="radio" name="{{guest.guest_id}}RSVP" [(ngModel)]="guest.games_rsvp" [value]="true"></div>
-                            <div class="rsvpItem" style="width: 200px; text-align: center;"><input type="radio" name="{{guest.guest_id}}RSVP" [(ngModel)]="guest.games_rsvp" [value]="false"></div>
+                            <div class="rsvpItem radioDiv" style="width: 200px; text-align: center;"><input type="radio" name="{{guest.guest_id}}RSVP" [(ngModel)]="guest.games_rsvp" [value]="true"><span class="mark"></span></div>
+                            <div class="rsvpItem radioDiv" style="width: 200px; text-align: center;"><input type="radio" name="{{guest.guest_id}}RSVP" [(ngModel)]="guest.games_rsvp" [value]="false"><span class="mark"></span></div>
                         </div>
                     </div>
                     <button class="standardButton" style="display: inline-block; margin-right: 20px;" (click)="navRSVP(false)">Back</button>
@@ -157,6 +158,12 @@
             </div>
         </div>
         <div *ngIf="!currentParty.authenticated" class="standardText" style="font-size: 30px;">Please log in to RSVP!</div>
+        <div class="popup" *ngIf="emailRequiredPopupShowing">
+            <div class="standardText" style="font-size: 15px; margin-bottom: 15px;">Your response has not been recorded, an email is required!</div>
+            <input class="standardInput" type="text" placeholder="Email" [(ngModel)]="currentParty.email">
+            <button class="standardButton" (click)="submitRSVP()">Submit</button>
+            <div class="standardText" style="font-size: 15px; margin-top: 15px;">Please provide an email so that we can contact you with important updates!</div>
+        </div>
         <div *ngIf="warningPopupShowing" class="warningPopup">
             <div class="standardText">Your response has not been recorded! Please press 'Submit' to record your response!</div>
             <button class="standardButton" (click)="warningPopupShowing = false;">Close</button>
