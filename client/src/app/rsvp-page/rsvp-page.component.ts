@@ -84,6 +84,11 @@ export class RsvpPageComponent implements OnInit {
                     var allDeclined: boolean = true;
                     this.currentParty.guests.forEach(guest => {
                         if (guest.rsvp) allDeclined = false;
+                        else {
+                            guest.dinner_rsvp = false;
+                            guest.reunion_rsvp = false;
+                            guest.games_rsvp = false;
+                        }
 
                         if (guest.name.match(/"\+[0-9]"/g)) alertString += `Please provide a name for ${guest.name}!\n`;
                         else if (!guest.name.match(/^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]+$/u)) alertString += `Please provide a different name for "${guest.name}"!\n- No special characters (&,#,@,etc.)\n`

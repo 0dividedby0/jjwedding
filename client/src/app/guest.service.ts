@@ -93,6 +93,13 @@ export class GuestService {
         console.log("Getting guests");
         this.http.get<[Guest]>(`${GuestService.rootURL}/guests/${access_code}`).subscribe((data: [Guest]) => {
             this.currentParty.guests = data;
+            for (let i = 0; i < this.currentParty.guests.length; i++) {
+                this.currentParty.guests[i].rsvp = this.currentParty.guests[i].rsvp ? true : false;
+                this.currentParty.guests[i].dinner_rsvp = this.currentParty.guests[i].dinner_rsvp ? true : false;
+                this.currentParty.guests[i].reunion_rsvp = this.currentParty.guests[i].reunion_rsvp ? true : false;
+                this.currentParty.guests[i].games_rsvp = this.currentParty.guests[i].games_rsvp ? true : false;
+                this.currentParty.guests[i].shower_rsvp = this.currentParty.guests[i].shower_rsvp ? true : false;
+            }
         });
     }
 

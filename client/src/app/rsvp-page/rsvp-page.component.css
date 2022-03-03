@@ -50,6 +50,7 @@ input[type='radio']:checked {
     border-radius: 10px;
     display: inline-block;
     border: 1px black solid;
+    vertical-align: -webkit-baseline-middle;
 }
 .pageSelected {
     background-color: black;
