@@ -18,7 +18,7 @@ router.post('/', function(req, res) {
     console.log("Updating guests!")
     req.body.forEach(guest => {
         console.log(`\tUpdating guest ${guest.guest_id} - Name: ${guest.name}, RSVP: ${guest.rsvp}, Dinner RSVP: ${guest.dinner_rsvp}, Afterparty RSVP: ${guest.reunion_rsvp}, Games RSVP: ${guest.games_rsvp}, Shower_RSVP: ${guest.shower_rsvp}`);
-        database.query(`update guests set rsvp = ${guest.rsvp}, dinner_rsvp = ${guest.dinner_rsvp}, reunion_rsvp = ${guest.reunion_rsvp}, games_rsvp = ${guest.games_rsvp}, name = "${guest.name}", shower_rsvp = "${guest.shower_rsvp}" where guest_id = "${guest.guest_id}"`, function (error, results, fields) {
+        database.query(`update guests set rsvp = ${guest.rsvp ? '1' : '0'}, dinner_rsvp = ${guest.dinner_rsvp ? '1' : '0'}, reunion_rsvp = ${guest.reunion_rsvp ? '1' : '0'}, games_rsvp = ${guest.games_rsvp ? '1' : '0'}, name = "${guest.name}", shower_rsvp = "${guest.shower_rsvp ? '1' : '0'}" where guest_id = "${guest.guest_id}"`, function (error, results, fields) {
             if (error) console.log(error);
             else console.log("\tDone.");
         });

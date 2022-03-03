@@ -32,7 +32,7 @@ router.post('/:access_code', function(req, res) {
         });
     }
     else if ("shower_responded" in req.body){
-        console.log(`\tSetting responded to ${req.body.shower_responded}`);
+        console.log(`\tSetting responded to ${req.body.shower_responded ? '1' : '0'}`);
         database.query(`update parties set shower_responded = ${req.body.shower_responded} where access_code = "${req.params.access_code}"`, function (error, results, fields) {
             if (error) console.log(error);
             else res.send(results);
@@ -40,7 +40,7 @@ router.post('/:access_code', function(req, res) {
     }
     else if ("responded" in req.body){
         console.log(`\tSetting responded to ${req.body.responded}`);
-        database.query(`update parties set responded = ${req.body.responded} where access_code = "${req.params.access_code}"`, function (error, results, fields) {
+        database.query(`update parties set responded = ${req.body.responded ? '1' : '0'} where access_code = "${req.params.access_code}"`, function (error, results, fields) {
             if (error) console.log(error);
             else res.send(results);
         });
