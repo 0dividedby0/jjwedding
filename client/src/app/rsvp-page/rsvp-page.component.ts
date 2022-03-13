@@ -4,7 +4,7 @@ import { GuestService } from '../guest.service';
 import { CurrentParty } from '../currentParty';
 import {} from 'googlemaps';
 import { KeyValue } from '@angular/common';
-import { ThisReceiver } from '@angular/compiler';
+import { trigger, state, style, animate, transition } from '@angular/animations';
 
 interface Party {
     access_code: string;
@@ -29,7 +29,19 @@ interface Guest {
 @Component({
   selector: 'app-rsvp-page',
   templateUrl: './rsvp-page.component.html',
-  styleUrls: ['./rsvp-page.component.css']
+  styleUrls: ['./rsvp-page.component.css'],
+  animations: [
+    trigger('fireworkAnimation', [      
+      transition(':enter', [
+        style({ opacity: 1 }),
+        animate(1000)
+      ]),
+      transition(':leave', [
+        animate(1000, style({ opacity: 0 }))
+      ]),
+      state('*', style({ opacity: 1 })),
+    ])
+  ]
 })
 export class RsvpPageComponent implements OnInit {
 
@@ -41,6 +53,7 @@ export class RsvpPageComponent implements OnInit {
     emailRequiredPopupShowing: boolean = false;
     currentPage: number = 1;
     adminData: { [key: string]: {party: Party, guests: [Guest?]} } = {};
+    fireworksShowing = false;
 
     canDeactivate(): Observable<boolean> | boolean {
         if (this.currentParty.responded) return true;
@@ -94,8 +107,8 @@ export class RsvpPageComponent implements OnInit {
                             guest.games_rsvp = false;
                         }
 
-                        if (guest.name.match(/"\+[0-9]"/g)) alertString += `Please provide a name for ${guest.name}!\n`;
-                        else if (!guest.name.match(/^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]+$/u)) alertString += `Please provide a different name for "${guest.name}"!\n- No special characters (&,#,@,etc.)\n`
+                        if (guest.name.match(/"\+[0-9]"/g) && guest.rsvp) alertString += `Please provide a name for ${guest.name}!\n`;
+                        else if (guest.rsvp && !guest.name.match(/^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]+$/u)) alertString += `Please provide a different name for "${guest.name}"!\n- No special characters (&,#,@,etc.)\n`
                     });
                     if (anyUndefined) alert("Plase provide a response for all guests!")
                     else if (alertString.length > 0) alert(alertString);
@@ -257,6 +270,10 @@ export class RsvpPageComponent implements OnInit {
                 }
                 this.guestService.updateGuests();
                 this.guestService.updateParty({responded: 1});
+                if (!allDeclined) this.fireworksShowing = true;
+                setTimeout(() => {
+                    this.fireworksShowing = false;
+                }, 4000);
             }
             else {
                 if (this.emailRequiredPopupShowing) alert("Email is required to accept this invitation! Please provide an email!");

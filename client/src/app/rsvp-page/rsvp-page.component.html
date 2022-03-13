@@ -3,6 +3,7 @@
     <app-nav-bar title="RSVP"></app-nav-bar>
     <div class="primaryContent" style="text-align: center;">
         <div *ngIf="currentParty.authenticated">
+            <img *ngIf="fireworksShowing" [@fireworkAnimation]="fireworksShowing ? 'fireworksIn': 'fireworksOut'" class="fireworks" src="images/home/fireworks.gif"/>
             <div class="standardText" style="margin-top: 10px; font-size: 25px; max-width: 75%; display: inline-block;">Please respond by May 31, 2022!</div>
             <div class="partyName cursiveText">{{currentParty.party}}</div>
             <div class="cursiveText" style="margin-top: 10px; font-size: 28px;">You are invited to the wedding of Jessica Peebles and Jason Halcomb! We look forward to seeing you!</div>
@@ -55,7 +56,7 @@
                     <button class="standardButton" style="display: inline-block; margin-left: 20px;" (click)="navRSVP(true)">Next</button>
                 </div>
                 <div *ngIf="currentPage == 3">
-                    <div class="standardText" style="margin-top: 10px; font-size: 25px;">Will you be attending the Family/Friend Reunion on Sunday (7/3)?</div>
+                    <div class="standardText" style="margin-top: 10px; font-size: 25px;">Will you be attending the Family and Friend Reunion on Sunday (7/3)?</div>
                     <div style="margin-top: 30px;">
                         <div class="rsvpItem standardText" style="width: 300px;">Name</div>
                         <div class="rsvpItem standardText" style="width: 200px; text-align: center;">Delightfully Accept</div>
@@ -79,7 +80,7 @@
                     <button class="standardButton" style="display: inline-block; margin-left: 20px;" (click)="navRSVP(true)">Next</button>
                 </div>
                 <div *ngIf="currentPage == 4">
-                    <div class="standardText" style="margin-top: 10px; font-size: 25px;">Would you like to participate in the organized camp games at the Family/Friend Reunion on Sunday (7/3)?</div>
+                    <div class="standardText" style="margin-top: 10px; font-size: 25px;">Would you like to participate in the organized camp games at the Family and Friend Reunion on Sunday (7/3)?</div>
                     <div style="margin-top: 30px;">
                         <div class="rsvpItem standardText" style="width: 300px;">Name</div>
                         <div class="rsvpItem standardText" style="width: 200px; text-align: center;">Delightfully Accept</div>
@@ -129,7 +130,7 @@
                         <div class="rsvpItem standardText" style="vertical-align: bottom; width: 20%;">Name</div>
                         <div class="rsvpItem standardText" style="vertical-align: bottom; width: 20%; text-align: center;">Wedding (7/2)</div>
                         <div class="rsvpItem standardText" style="vertical-align: bottom; width: 20%; text-align: center;">Welcome Dinner (7/1)</div>
-                        <div class="rsvpItem standardText" style="vertical-align: bottom; width: 20%; text-align: center;">Family/Friend Reunion (7/3)</div>
+                        <div class="rsvpItem standardText" style="vertical-align: bottom; width: 20%; text-align: center;">Family and Friend Reunion (7/3)</div>
                     </div>
                     <div *ngFor="let guest of currentParty.guests;" style="margin-top: 10px; margin-bottom: 10px; margin-left: -30px;">
                         <div class="rsvpItem" style="width: 20%; vertical-align: top;"><div class="standardText" style="font-weight: normal;">{{guest.name}}</div></div>
