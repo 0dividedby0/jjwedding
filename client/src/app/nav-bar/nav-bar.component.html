@@ -8,7 +8,7 @@
         <a class="menuButton" href="travel">Travel</a>
         <a class="menuButton" href="registry">Registry</a>
         <a class="menuButton" href="community">Community</a>
-        <a class="menuButton" *ngIf="currentParty.admin || currentParty.bridal_shower" href="bridalshower">Bridal Shower</a>
+        <a class="menuButton" *ngIf="currentParty.bridal_shower" href="bridalshower">Bridal Shower</a>
     </div>
     <a class="menuItem cursiveText" href="home">Jason & Jessica</a>
     <div *ngIf="menuShowing" class="menu-mobile">
@@ -18,7 +18,7 @@
         <a class="menuButton" href="travel">Travel</a>
         <a class="menuButton" href="registry">Registry</a>
         <a class="menuButton" href="community">Community</a>
-        <a class="menuButton" *ngIf="currentParty.admin || currentParty.bridal_shower" href="bridalshower">Bridal Shower</a>
+        <a class="menuButton" *ngIf="currentParty.bridal_shower" href="bridalshower">Bridal Shower</a>
     </div>
 </div>
 <img src="images/cornerFlowers.png" class="flowersLeft">

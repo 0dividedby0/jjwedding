@@ -54,7 +54,16 @@ export class RsvpPageComponent implements OnInit {
     currentPage: number = 1;
     adminData: { [key: string]: {party: Party, guests: [Guest?]} } = {};
     fireworksShowing = false;
+    noResponse: string[] = [];
+    noResponseDetails: boolean = false;
+    tentativeAccept: string[] = [];
+    tentativeDetails: boolean = false;
+    accepted: string[][] = [[],[],[],[]];
+    acceptedDetails: boolean[] = [false, false, false, false];
+    declined: string[][] = [[],[],[],[]];
+    declinedDetails: boolean[] = [false, false, false, false];
 
+    
     canDeactivate(): Observable<boolean> | boolean {
         if (this.currentParty.responded) return true;
         this.warningPopupShowing = true;
@@ -88,6 +97,17 @@ export class RsvpPageComponent implements OnInit {
         });
         data.guests.forEach(guest => {
             this.adminData[guest.access_code].guests.push(guest);
+
+            if (this.adminData[guest.access_code].party.responded) {
+                guest.rsvp ? this.accepted[0].push(guest.name) : this.declined[0].push(guest.name);
+                guest.dinner_rsvp ? this.accepted[1].push(guest.name) : this.declined[1].push(guest.name);
+                guest.reunion_rsvp ? this.accepted[2].push(guest.name) : this.declined[2].push(guest.name);
+                guest.games_rsvp ? this.accepted[3].push(guest.name) : this.declined[3].push(guest.name);
+            }
+            else {
+                if (guest.rsvp) this.tentativeAccept.push(guest.name);
+                else this.noResponse.push(guest.name);
+            }
         });
     }
 
@@ -280,6 +300,14 @@ export class RsvpPageComponent implements OnInit {
                 else this.emailRequiredPopupShowing = true;
             }
         }
+    }
+
+    partyFilter(parties: any) {
+
+    }
+
+    guestFilter(guests: any) {
+
     }
 
     orderbyValueAsc = (a: KeyValue<string,{party: Party, guests: [Guest?]}>, b: KeyValue<string,{party: Party, guests: [Guest?]}>): number => {

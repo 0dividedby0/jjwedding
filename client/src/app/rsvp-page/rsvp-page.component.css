@@ -107,6 +107,20 @@ input[type='radio']:checked {
 .pageSelected {
     background-color: black;
 }
+td, th {
+    padding: 10px;
+    border: 1px solid black;
+}
+.details {
+    position: absolute;
+    width: 400px;
+    column-count: 3;
+    background: antiquewhite;
+    padding: 10px;
+}
+.details div {
+    padding: 5px;
+}
 @media (max-width: 1150px) {
     .partyName {
         font-size: 50px;

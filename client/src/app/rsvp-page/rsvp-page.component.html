@@ -4,7 +4,7 @@
     <div class="primaryContent" style="text-align: center;">
         <div *ngIf="currentParty.authenticated">
             <img *ngIf="fireworksShowing" [@fireworkAnimation]="fireworksShowing ? 'fireworksIn': 'fireworksOut'" class="fireworks" src="images/home/fireworks.gif"/>
-            <div class="standardText" style="margin-top: 10px; font-size: 25px; max-width: 75%; display: inline-block;">Please respond by May 31, 2022!</div>
+            <div class="standardText" style="margin-top: 10px; font-size: 25px; max-width: 75%; display: inline-block;">Please respond by May 14, 2022!</div>
             <div class="partyName cursiveText">{{currentParty.party}}</div>
             <div class="cursiveText" style="margin-top: 10px; font-size: 28px;">You are invited to the wedding of Jessica Peebles and Jason Halcomb! We look forward to seeing you!</div>
             <hr style="width: 75%; margin-top: 30px;">
@@ -144,6 +144,91 @@
             <hr style="width: 75%;">
             <div class="standardText" style="margin-top: 10px; font-size: 16px;">Please see <a href="/wedding">Our Wedding</a> for more details or email us at jjwedding0703@gmail.com with questions!</div>
             <div *ngIf="currentParty.admin" style="text-align: left; margin-top: 20px;">
+                <table style="padding: 10px; margin-left: auto; margin-right: auto;">
+                    <tr>
+                        <th style="border: none;"></th>
+                        <th>Wedding</th>
+                        <th>Dinner</th>
+                        <th>Reunion</th>
+                        <th>Games</th>
+                    </tr>
+                    <tr>
+                        <th>Accepted</th>
+                        <td (click)="acceptedDetails[0] = !acceptedDetails[0]">
+                            {{accepted[0].length}}
+                            <div *ngIf="acceptedDetails[0]" class="details">
+                                <div *ngFor="let guest of accepted[0]">{{guest}}</div>
+                            </div>
+                        </td>
+                        <td (click)="acceptedDetails[1] = !acceptedDetails[1]">
+                            {{accepted[1].length}}
+                            <div *ngIf="acceptedDetails[1]" class="details">
+                                <div *ngFor="let guest of accepted[1]">{{guest}}</div>
+                            </div>
+                        </td>
+                        <td (click)="acceptedDetails[2] = !acceptedDetails[2]">
+                            {{accepted[2].length}}
+                            <div *ngIf="acceptedDetails[2]" class="details">
+                                <div *ngFor="let guest of accepted[2]">{{guest}}</div>
+                            </div>
+                        </td>
+                        <td (click)="acceptedDetails[3] = !acceptedDetails[3]">
+                            {{accepted[3].length}}
+                            <div *ngIf="acceptedDetails[3]" class="details">
+                                <div *ngFor="let guest of accepted[3]">{{guest}}</div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Declined</th>
+                        <td (click)="declinedDetails[0] = !declinedDetails[0]">
+                            {{declined[0].length}}
+                            <div *ngIf="declinedDetails[0]" class="details">
+                                <div *ngFor="let guest of declined[0]">{{guest}}</div>
+                            </div>
+                        </td>
+                        <td (click)="declinedDetails[1] = !declinedDetails[1]">
+                            {{declined[1].length}}
+                            <div *ngIf="declinedDetails[1]" class="details">
+                                <div *ngFor="let guest of declined[1]">{{guest}}</div>
+                            </div>
+                        </td>
+                        <td (click)="declinedDetails[2] = !declinedDetails[2]">
+                            {{declined[2].length}}
+                            <div *ngIf="declinedDetails[2]" class="details">
+                                <div *ngFor="let guest of declined[2]">{{guest}}</div>
+                            </div>
+                        </td>
+                        <td (click)="declinedDetails[3] = !declinedDetails[3]">
+                            {{declined[3].length}}
+                            <div *ngIf="declinedDetails[3]" class="details">
+                                <div *ngFor="let guest of declined[3]">{{guest}}</div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Tentative</th>
+                        <td (click)="tentativeDetails = !tentativeDetails">
+                            {{tentativeAccept.length}}
+                            <div *ngIf="tentativeDetails" class="details">
+                                <div *ngFor="let guest of tentativeAccept">{{guest}}</div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Tentative Total</th>
+                        <td>{{tentativeAccept.length + accepted[0].length}}</td>
+                    </tr>
+                    <tr>
+                        <th>No Response</th>
+                        <td (click)="noResponseDetails = !noResponseDetails">
+                            {{noResponse.length}}
+                            <div *ngIf="noResponseDetails" class="details">
+                                <div *ngFor="let guest of noResponse">{{guest}}</div>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
                 <div *ngFor="let object of adminData | keyvalue : orderbyValueAsc" style="break-inside: avoid-column; margin-bottom: 15px;">
                     <div class="standardText" style="font-weight: bold; float: left;">{{object.value.party.party}} - {{object.value.party.access_code}}</div>
                     <div class="standardText" *ngIf="object.value.party.email" style="margin-left: 50px; float: right;">{{object.value.party.email}}</div>
