@@ -1,0 +1,29 @@
+.bg {
+    height: 100%; 
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.pageContent {
+    height: 100%;
+    width: 100%;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+}
+.question {
+    font-weight: bold;
+    text-decoration: underline;
+    font-size: 25px;
+}
+.spacer {
+    display: none;
+    height: 40px;
+}
+@media (max-width: 1150px) {
+    .spacer {
+        display: inline-block;
+    }
+}

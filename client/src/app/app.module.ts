@@ -19,6 +19,7 @@ import { CountdownComponent } from './countdown/countdown.component';
 import { CommunityPageComponent } from './community-page/community-page.component';
 import { FooterComponent } from './footer/footer.component';
 import { BridalPageComponent } from './bridal-page/bridal-page.component';
+import { FaqPageComponent } from './faq-page/faq-page.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { BridalPageComponent } from './bridal-page/bridal-page.component';
     CountdownComponent,
     CommunityPageComponent,
     FooterComponent,
-    BridalPageComponent
+    BridalPageComponent,
+    FaqPageComponent
   ],
   imports: [
     BrowserModule,

@@ -8,6 +8,7 @@ import { TravelPageComponent } from './travel-page/travel-page.component';
 import { RegistryPageComponent } from './registry-page/registry-page.component';
 import { CommunityPageComponent } from './community-page/community-page.component';
 import { BridalPageComponent } from './bridal-page/bridal-page.component';
+import { FaqPageComponent } from './faq-page/faq-page.component';
 const routes: Routes = [
   { path: '', component: HomePageComponent },
   { path: 'home', component: HomePageComponent },
@@ -18,6 +19,7 @@ const routes: Routes = [
   { path: 'registry', component: RegistryPageComponent },
   { path: 'community', component: CommunityPageComponent },
   { path: 'bridalshower', component: BridalPageComponent },
+  { path: 'faq', component: FaqPageComponent }
 ];
 
 @NgModule({

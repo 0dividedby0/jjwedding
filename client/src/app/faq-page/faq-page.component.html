@@ -1,0 +1,53 @@
+<div class="bg" style="background-repeat: repeat; background-size: auto; background-image: url(images/textureBackground.png);"></div>
+<div class="pageContent">
+    <app-nav-bar title="FAQs"></app-nav-bar>
+    <div class="primaryContent" style="text-align: left;">
+        <div *ngIf="!currentParty.authenticated" class="standardText" style="font-size: 30px; text-align: center; margin-bottom: 30px;">Please log in to view wedding details!</div>
+        <div *ngIf="currentParty.authenticated">
+            <div class="spacer"></div>
+            <div class="question">What should I wear?</div>
+            <div class="answer">Our most asked question so far! Please see <a href="">this guide</a> for the weekend attire that Jessica’s good friend, Jodi Kreiner put a lot of time and effort into curating! Thank you Jodi!</div>
+            <hr>
+            <div class="question">What will the weather be that time of the year?</div>
+            <div class="answer">This time of the year is generally sunny or partly cloudy, but it’s Washington, who knows! Bring a rain jacket or umbrella just in case (hopefully not!), but the area tends to have a breeze, so a light coverup may be nice, but not necessarily needed. Previous data shows that this weekend averages a high of high 70s to low 80s with a low of mid 50s to 60s.</div>
+            <hr>
+            <div class="question">Are children welcome?</div>
+            <div class="answer">Yes! We would love for everyone to be there, though please be conscious of taking them out of the ceremony space if they get squirmy please.</div>
+            <hr>
+            <div class="question">What events are inside and outside?</div>
+            <div class="answer">Almost everything is planned to be outside, though we will shift as necessary for weather. The reception will be indoors at Empress Estates.</div>
+            <hr>
+            <div class="question">What time should I arrive to the wedding?</div>
+            <div class="answer">Please arrive at 4:30 pm at Empress Estate.</div>
+            <hr>
+            <div class="question">Where do I sit in the ceremony space?</div>
+            <div class="answer">There will be reserved signs marking seats. If there is not a sign there, please sit there! Please do not leave seats open at the front if there is not a sign there. We will not have a formal brides side or grooms side.</div>
+            <hr>
+            <div class="question">Any tricky directions?</div>
+            <div class="answer">You should be able to input both addresses into google maps and it should take you right to it. For Empress Estates, once you turn left off of Old Pacific Highway, you will start to see white signs for Empress Estate at every turn. Keep driving until the road stops and you hit a parking lot with a mansion next door. For Anderson Lodge, please make sure to go to the Anderson Lodge - Hilltop House, not the Main Lodge, we recommend google maps because it recognizes the difference and please start your directions while in a city because reception can get pretty spotty as you head into the mountains. Driving along Highway 503, turn left on to Bald Eagle Road, you may see Private Property signs, you’re in the correct place. You should also see a sign that says JJ wedding. Keep driving up Bald Eagle Road, straight, if you see other roads coming off the main road, keep going left/straight. You’ll know you’re there when the trees clear, you’ll see red building on your right and a field on your left.</div>
+            <hr>
+            <div class="question">Where should guests park?</div>
+            <div class="answer">Parking is free at both venues. At Anderson Lodge, once you reach the hilltop house, there will be building on your right, please park in the field to your left. At Empress Estate, there is parking in a semi circle lot around the property once you get there, please enter the ceremony space at the bottom of the hill across the street from the mansion, this will be designated by a welcome sign, then please head up the steps, or keep going and head up the ramp that will be on the right a little further down.</div>
+            <hr>
+            <div class="question">Are the ceremony and reception locations wheelchairs accessible?</div>
+            <div class="answer">Yes, we made sure of this when picking out venues.</div>
+            <hr>
+            <div class="question">Will food and drinks be served at the reception? What kind of food?</div>
+            <div class="answer">Yes, cocktail hour will have appetizers and drinks and the reception will have a full meal, dessert, and an open bar.</div>
+            <hr>
+            <div class="question">Will transportation be provided between to/from the hotel?</div>
+            <div class="answer">There are no plans at this time, but please join our <a href="">carpool list!</a></div>
+            <hr>
+            <div class="question">May I take a centerpiece/candle/flowers home as a souvenir?</div>
+            <div class="answer">No, some belong to the venue and the vases belong to the florist. At the end of the weekend we will be donating our flowers.</div>
+            <hr>
+            <div class="question">I noticed you’re getting married on July 2nd but signing your marriage license on July 3rd, may I ask why?</div>
+            <div class="answer">Our venue was available on July 2nd but we wanted to keep our anniversary date which is July 3rd. July 3, 2022 will be our 4th anniversary as a couple, first day as husband and wife!</div>
+            <hr>
+            <div class="question">I still have questions, what is the best way to contact you?</div>
+            <div class="answer">The best way to contact is via email at jjwedding0703@gmail.com</div>
+        </div>
+    </div>
+    <app-login></app-login>
+    <app-footer></app-footer>
+</div>
